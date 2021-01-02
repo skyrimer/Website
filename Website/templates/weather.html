@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/features.css')}}">
+    <form class="featureBox" method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group w-50 h5" >
+            {{ form.city.label(class="form-control-label h4") }}
+            {% if form.city.errors %}
+                {{ form.city(class="form-control form-control-lg is-invalid",
+                                       placeholder="Enter city") }}
+                <div class="invalid-feedback">
+                    {% for error in form.city.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.city(class="form-control form-control-lg", 
+                             placeholder="Enter city",
+                             autofocus=True) }}
+            {% endif %}
+            <div class="pt-3">
+                {% if weather.status %}
+                    {% if weather.status == 1 %}
+                        <h2>{{  _("Unable to find city :(")  }}</h2>
+                    {% else %}
+                        <h3>{{  _("Weather in")  }} {{ weather.city}}</h3>
+                        <h4>{{  _("Status")  }} : {{ weather.detailed_status }}<img src="{{ weather.weather_icon }}" width="40" height="40"></h4>
+                        <h4>{{  _("Temperature")  }} : {{ weather.temperature }}°С</h4>
+                        <h4>{{  _("Humidity")  }} : {{ weather.humidity }}%</h4>
+                        <h4>{{  _("Wind")  }} : {{ weather.wind }}m/s</h4>
+                        <h4>{{  _("Clouds")  }} : {{ weather.clouds }}%</h4>
+                        {% if weather.index %}
+                            <h4>{{  _("Heat index")  }} : {{ weather.heat_index }}</h4>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    <h4>{{  _("Unable to show the weather :(")  }}</h4>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+{% endblock content %}

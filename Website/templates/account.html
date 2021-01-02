@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    body {
+        background: #4568DC;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color:#fff; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+    <div class="content-section profile">
+        <div>
+            <div class="media">
+                <img class="rounded-circle account-img"  width="150" height="150"  src="{{ image_file }}">
+                <div class="media-body" style="padding-left: 20px">
+                    <h1 class="account-heading">{{ user.username }}</h1>
+                    <legend>Email: {{ user.email }}</legend>
+                    {% for paragraph in user.bio.split('\r') %}
+                        <h5 class="article-content">{{ paragraph }}</h5>
+                    {% endfor %}
+                    {% if current_user == user %}
+                        <a class="btn btn-dark" href="{{ url_for('users.user_posts', username=user.username) }}">
+                            {{  _("My posts")  }}
+                        </a>
+                    {% else %}
+                        <a class="btn btn-dark" href="{{ url_for('users.user_posts', username=user.username) }}">
+                            {{  _("User's posts")  }}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% if form %}
+                <br>
+                <form method="POST" action="" enctype="multipart/form-data" style="padding-top: 20px;">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group w-75 h5">
+                        <h2>{{  _("Account Info")  }}</h2>
+                        <div style="padding-top: 10px;" class="form-group">
+                            {{ form.username.label(class="form-control-label") }}
+                            {% if form.username.errors %}
+                                {{ form.username(class="form-control form-control-lg is-invalid",
+                                                 placeholder='Enter your username') }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.username.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.username(class="form-control form-control-lg",
+                                                 placeholder='Enter your username') }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label(class="form-control-label") }}
+                            {% if form.email.errors %}
+                                {{ form.email(class="form-control form-control-lg is-invalid",
+                                              placeholder='Enter your email') }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class="form-control form-control-lg",
+                                              placeholder='Enter your email') }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.bio.label(class="form-control-label") }}
+                            {% if form.bio.errors %}
+                                {{ form.bio(class="form-control form-control-lg is-invalid",
+                                            placeholder='Enter your bio') }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.bio.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.bio(class="form-control form-control-lg",
+                                            placeholder="Enter some bio") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.picture.label() }}
+                            {{ form.picture(class="form-control-file small") }}
+                            {% if form.picture.errors %}
+                                {% for error in form.picture.errors %}
+                                    <span class="text-danger">{{ error }}</span></br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-danger font-weight-bold" href="{{ url_for('users.change_password') }}">
+                                {{  _("Change password")  }}
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-primary font-weight-bold") }}
+                        </div>
+                    </fieldset>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

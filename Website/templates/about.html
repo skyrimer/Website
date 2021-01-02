@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card rounded border">
+    <img src="{{ url_for('static', filename='about/me.jpg') }}" alt="Avatar">
+    <div class="container">
+        <h2><b>{{  _("Kirill Chekmenev")  }}</b></h2> 
+        <p>{{  _("A good person")  }}</p>
+        <small>
+            {{  _("I am Kirill Chekmenev, and I have made this Website. My native country is Russia, however I am currently studying in a secret place :) Hope everything is good and not lagging")  }}
+        </small>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% block content %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/form.css')}}">
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group w-50 h5">
+                <h1>{{  _("Register")  }}</h1>
+                <br>
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid",
+                                         placeholder="Enter your username",
+                                         autofocus=True) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg",
+                                         placeholder="Enter your username",
+                                         autofocus=True) }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid",
+                                      placeholder="Enter your email address",
+                                      autofocus=True) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg",
+                                      placeholder="Enter your email address") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.bio.label(class="form-control-label") }}
+                    {% if form.bio.errors %}
+                        {{ form.bio(class="form-control form-control-lg is-invalid",
+                                           placeholder="Enter your bio",
+                                           autofocus=True) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.bio.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.bio(class="form-control form-control-lg",
+                                         placeholder="Enter your bio") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid",
+                                         placeholder="Enter your secret password",
+                                         autofocus=True) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg",
+                                         placeholder="Enter your secret password") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.confirm_password.label(class="form-control-label") }}
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control form-control-lg is-invalid",
+                                                 placeholder="Confirm your secret password",
+                                                 autofocus=True) }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.confirm_password(class="form-control form-control-lg",
+                                                 placeholder="Confirm your secret password") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-primary font-weight-bold") }}
+                </div>
+                        <div>
+                <p>
+                    {{  _("Already Have An Account?")  }} 
+                    <a class="ml-2 font-weight-bold" href="{{ url_for('users.login') }}">
+                        {{  _("Sign In")  }}
+                    </a>
+                </p>
+            </div>
+            </fieldset>
+        </form>
+    </div>
+
+{% endblock content %}

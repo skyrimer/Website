@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+  canvas {
+    position: absolute;
+    top: 100px;
+    left: 385px;
+
+  }
+    #video {
+      position: relative;
+    }
+
+</style>
+<h5 id="error_text"></h5>
+<video id="video" width="720" height="560" autoplay muted></video>
+<script defer src="{{ url_for('static', filename='js/face-api.js') }}"></script>
+<script defer src="{{ url_for('static', filename='js/faceRec.js') }}"></script>
+{% endblock content %}

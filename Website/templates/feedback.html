@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if form %}
+    
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group w-50 h5">
+            {{ form.feedback_text.label(class="form-control-label text-center") }}
+            {% if form.feedback_text.errors %}
+                {{ form.feedback_text(class="form-control form-control-lg is-invalid",
+                                    placeholder="Enter feedback",
+                                    autofocus=True) }}
+                <div class="invalid-feedback">
+                    {% for error in form.feedback_text.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.feedback_text(class="form-control form-control-lg",
+                                       placeholder="Enter feedback",
+                                       autofocus=True)  }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-primary font-weight-bold") }}
+        </div>
+    </form>
+{% endif %}
+{% if opinions[-1] %}
+    <h1>{{  _("People's opinions")  }}</h1>
+    {% for user_opinions in opinions %}
+        <article class="media content-section pt-4">
+        <img class="rounded-circle article-img" width="100" height="100" src="{{ url_for('static', filename='profile_pictures/' + user_opinions._user.image_file) }}">
+        <div class="media-body pl-3">
+            <div class="article-metadata">
+                <h3><a class="mr-2  text-dark" href="{{ url_for('users.account', username=user_opinions._user.username) }}">{{ user_opinions._user.username }}</a></h3>
+                <strong class="text-muted">{{ user_opinions.date_posted.strftime('%d-%m-%Y') }}</strong>
+            </div>
+            <h2 class="article-title">{{ user_opinions.title }}</h2>
+            <p class="article-content">{{ user_opinions.content }}</p>
+        </div>
+        </article>
+    {% endfor %}
+{% else %}
+    <h1>{{  _("No opinions :(")  }}</h1>
+{% endif %}
+{% endblock content %}

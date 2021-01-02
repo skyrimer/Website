@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--  CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/rocket.css') }}">
+    <!-- Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{ url_for('static', filename='icons/site.webmanifest')}}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='icons/safari-pinned-tab.svg')}}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>{{title}}</title>
+</head>
+
+<body>
+  <div id="scrollPath"></div>
+  <div class="scene">
+    <div class="rocket">
+        <img src="{{ url_for('static', filename='/rocket/rocket.png') }}" alt="Here should be a rocket">
+    </div>
+    </div>
+<script>
+    alert('Press Esc to go back')
+    document.addEventListener('keydown', function(event) {
+    if (event.code == 'Escape') {
+        history.back();
+    }
+    });
+    document.addEventListener("mousemove", function(e){
+        var rocket = document.querySelector('.rocket')
+        rocket.style.left = e.offsetX + 'px'
+        rocket.style.top = e.offsetY + 'px'
+    })
+
+    function stars() {
+        let count = 50;
+        let scene = document.querySelector('body');
+        let i = 0;
+        while (i < count) {
+            let star = document.createElement('i')
+            let x = Math.floor(Math.random() * (window.innerWidth - 5));
+
+            let duration = Math.random() * 3
+            let h = Math.random() * 100;
+
+            star.style.left = x + 'px'
+            star.style.width = 1 + 'px'
+            star.style.height = 50 + h + 'px'
+            star.style.animationDuration = duration + 's'
+
+            scene.appendChild(star);
+            i++
+        }
+    }
+    stars();
+</script>
+</body>
+</html>

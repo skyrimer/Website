@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+  {% if posts.items|length > 0 %}
+    <h1 class="mb-3">{{ title }} ({{ posts.total }})</h1>
+    {% for post in posts.items %}
+        <article class="media content-section" style="padding-bottom: 20px;">
+          <img class="rounded-circle article-img" width="100" height="100" src="{{ url_for('static', filename='profile_pictures/' + post.author.image_file) }}">
+          <div class="media-body" style="padding-left: 20px;">
+            <div class="article-metadata">
+              <h3><a class="mr-2  text-dark" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a></h3>
+              <strong class="text-muted">{{ post.date_posted.strftime('%d-%m-%Y') }}</strong>
+            </div>
+            <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if posts.page == page_num %}
+          <a class="btn btn-primary mb-4" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-primary mb-4" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {% if current_user == user %}
+      <h2>{{  _("You have no posts :(")  }}</h2>
+    {% else %}
+      <h2>{{  _("User has no posts :(")  }}</h2>
+    {% endif %}
+  {% endif %}
+{% endblock content %}

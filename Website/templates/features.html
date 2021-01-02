@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block content %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/features.css')}}">
+    <meta http-equiv="Refresh" content="3600">
+    <div class="wavy font-weight-bold">
+        {% for index in range(word_length)  %}
+            <h2 style="--i: {{ index+1 }};">{{  word[index]  }}</h2>
+        {% endfor %}
+    </div>  
+    <div class="myclock">
+        <div class="clock">
+            <div class="wrap">
+                <span class="hour"></span>
+                <span class="minute"></span>
+                <span class="second"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5">
+        <h5 id="Time"> Time - 00:00:00 </h5>
+    </div>
+    <div class="calendar">
+        <p id="monthName"></p>
+        <p id="dayName"></p>
+        <p id="dayNumber"></p>
+        <p id="year"></p>
+    </div>
+    <button class="mt-5 btn btn-outline-dark btn-lg font-weight-bold">
+        {{ _("Total amount of views: ") }} {{ my_views }}
+    </button>
+    <div class="mt-5">
+        <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.weather')  }}">
+            {{ _("Weather")  }}
+        </a>
+        <a class="btn-grad font-weight-bold" href="{{ url_for('features.password_check')  }}">
+            {{  _("Password check")  }}
+        </a>
+        <a class="btn-grad font-weight-bold" href="{{ url_for('features.rocket')  }}">
+            {{  _("Rocket fly")  }}
+        </a>
+        <a class="btn-grad font-weight-bold" href="{{ url_for('features.password_generator')  }}">
+            {{  _("Password Generator")  }}
+        </a>
+        <a class="btn-grad font-weight-bold" href="{{ url_for('features.face_recognition')  }}">
+            {{  _("Face Recognition")  }}
+        </a>
+    </div>
+    <div class="player mt-5">
+        <h3>{{  _("The best song ever")  }}</h3>
+        <div class="imgBx">
+            <img src="{{ url_for('static', filename='music/Battlefield.jpg') }}" alt="Here should be an image">
+        </div>
+        <audio preload="metadata" controls>
+            <source  src="{{ url_for('static', filename='music/Battlefield.mp3') }}" type="audio/mp3">
+        </audio>
+    </div>
+    <h3 class="mt-5">{{  _("My Calculator") }}</h3>
+    <div class="my-calculator">
+        <form class="calculator" name="calc">
+            <input class="value" type="text" name="txt" readonly="">
+            <span class="number clear" onclick="document.calc.txt.value = ''">c</span>
+            <span class="number" onclick="document.calc.txt.value += '/'">/</span>
+            <span class="number" onclick="document.calc.txt.value += '*'">*</span>
+            <span class="number" onclick="document.calc.txt.value += '7'">7</span>
+            <span class="number" onclick="document.calc.txt.value += '8'">8</span>
+            <span class="number" onclick="document.calc.txt.value += '9'">9</span>
+            <span class="number" onclick="document.calc.txt.value += '-'">-</span>
+            <span class="number" onclick="document.calc.txt.value += '4'">4</span>
+            <span class="number" onclick="document.calc.txt.value += '5'">5</span>
+            <span class="number" onclick="document.calc.txt.value += '6'">6</span>
+            <span class="number plus" onclick="document.calc.txt.value += '+'">+</span>
+            <span class="number" onclick="document.calc.txt.value += '3'">3</span>
+            <span class="number" onclick="document.calc.txt.value += '2'">2</span>
+            <span class="number" onclick="document.calc.txt.value += '1'">1</span>
+            <span class="number" onclick="document.calc.txt.value += '0'">0</span>
+            <span class="number" onclick="document.calc.txt.value += '00'">00</span>
+            <span class="number" onclick="document.calc.txt.value += '.'">.</span>
+            <span class="number equal" onclick="document.calc.txt.value = calculate(calc.txt.value)">=</span>
+        </form>
+    </div>
+    <script>
+        function calculate(expression) {
+            let result = eval(expression);
+            if (result == undefined) {
+                return ''
+            }
+            else {
+                return result
+            }
+        }
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock content %}
