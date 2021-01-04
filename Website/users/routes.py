@@ -1,13 +1,14 @@
 from flask import (render_template, url_for, flash, redirect,
                    request, Blueprint, abort)
 from flask_login import login_user, current_user, logout_user, login_required
-from Website import db, bcrypt
+from Website import db, bcrypt, oauth, google
 from Website.models import User, Post
 from Website.users.forms import (RegistrationForm, LoginForm,
                                  UpdateAccountForm, RequestResetForm,
                                  ResetPasswordForm, ChangePasswordForm)
 from Website.users.utils import (save_picture, reset_password,
-                                 my_login, get_user_and_his_posts)
+                                 my_login, get_user_and_his_posts,
+                                 get_picture_from_url)
 from flask_babel import gettext
 users = Blueprint('users', __name__)
 
@@ -52,7 +53,41 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash('You have been loged out!', 'info')
     return redirect(url_for('main.home'))
+
+#! Google registration
+@users.route('/google_login')
+def google_login():
+    google = oauth.create_client('google')  # create the google oauth client
+    redirect_uri = url_for('users.google_authorize', _external=True)
+    return google.authorize_redirect(redirect_uri)
+
+
+@users.route('/google_authorize')
+def google_authorize():
+    global user_info
+    google = oauth.create_client('google')  # create the google oauth client
+    token = google.authorize_access_token()  # Access token from google (needed to get user info)
+    resp = google.get('userinfo')  # userinfo contains stuff u specificed in the scrope
+    user_info = resp.json()
+
+    user = User.query.filter_by(email=user_info['email']).first()
+    if user:
+        login_user(user, remember=True)
+    else:
+        hashed_password = bcrypt.generate_password_hash(user_info['id'])\
+                                .decode('utf-8')
+        user = User(username=user_info['name'],
+                    email=user_info['email'],
+                    image_file=get_picture_from_url(user_info['picture']),
+                    password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        login_user(user, remember=True)
+    flash('Login successful!', 'success')
+    return redirect('/')
+
 
 
 @users.route("/account/<string:username>", methods=['GET', 'POST'])

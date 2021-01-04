@@ -59,6 +59,14 @@ def save_picture(form_picture):
     im.save(picture_path, 'png')
     return picture_fn
 
+
+def get_picture_from_url(url):
+    from PIL import Image
+    import urllib.request, io
+    path = io.BytesIO(urllib.request.urlopen(url).read())
+    return save_picture(path)
+
+
 def reset_password(email):
     user = User.query.filter_by(email=email).first()
     try:

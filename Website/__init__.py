@@ -6,12 +6,14 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_view_counter import ViewCounter
 from flask_admin import Admin
+from authlib.integrations.flask_client import OAuth
 from Website.config import Config
 
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 babel = Babel()
+oauth = OAuth()
 login_manager = LoginManager()
 login_manager.login_view = 'users.login'
 login_manager.login_message_category = 'info'
@@ -20,6 +22,18 @@ title = gettext("Kirill's website")
 pyowm_key = '71d9ed78c7a74fa1704089437d5e01f8'
 admin = Admin(name=title)
 
+google = oauth.register(
+    name='google',
+    client_id="721867642124-4kco7ba22u6h90gc3d0hkok1bdv7eguk.apps.googleusercontent.com",
+    client_secret="Q9NwbBSPqCULQg0rLTB5sdfT",
+    access_token_url='https://accounts.google.com/o/oauth2/token',
+    access_token_params=None,
+    authorize_url='https://accounts.google.com/o/oauth2/auth',
+    authorize_params=None,
+    api_base_url='https://www.googleapis.com/oauth2/v1/',
+    userinfo_endpoint='https://openidconnect.googleapis.com/v1/userinfo',  # This is only needed if using openId to fetch user info
+    client_kwargs={'scope': 'profile email'},
+)
 
 @babel.localeselector
 def get_locale():
@@ -44,6 +58,7 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
     admin.init_app(app)
+    oauth.init_app(app)
     with app.app_context():
         views = ViewCounter(app, db)
     from Website.users.routes import users

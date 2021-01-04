@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
                            default='default.png')
     password = db.Column(db.String(60), nullable=False)
     admin = db.Column(db.Boolean, default=False)
-    bio = db.Column(db.Text())
+    bio = db.Column(db.Text(), default='Too lazy to make bio(')
     posts = db.relationship('Post', backref='author', lazy=True)
     opinion = db.relationship('Feedback', backref='_user', lazy=True)
 
