@@ -10,4 +10,4 @@ if argv[-1] == 'restart':
         db.create_all()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
