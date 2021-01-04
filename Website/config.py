@@ -1,13 +1,15 @@
+import os
+
 class Config:
     """Config of the app
     """
-    SECRET_KEY = "1f647c79ac3ac911bc3fcca76321ea2f"
+    SECRET_KEY = os.environ.get("SECRET_KEY")
     SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     BABEL_DEFAULT_LOCALE = 'en'
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = "kirillswebsite@gmail.com"
-    MAIL_PASSWORD = "nohacks1337"
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     FLASK_ADMIN_SWATCH = 'cerulean'
