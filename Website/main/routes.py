@@ -50,10 +50,10 @@ def change_language(language):
     @babel.localeselector
     def get_locale():
         if language in languages:
-            flash(gettext(f'Language was changed'), 'success')
+            flash('Language was changed', 'success')
             return language
         else:
-            flash(gettext('No such language supported'), 'warning')
+            flash('No such language supported', 'warning')
             return request.accept_languages.best_match(languages)
 
     refresh()
