@@ -49,6 +49,34 @@ body {
     background: linear-gradient(to top, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+/* Dropbox */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    width: 25%;
+  }
+  
+  .dropdown-content {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+
 .content {
     padding: 20px 20px 20px 0px;
 }

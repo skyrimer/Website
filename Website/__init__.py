@@ -10,6 +10,7 @@ from authlib.integrations.flask_client import OAuth
 from Website.config import Config
 import os
 
+title = gettext("Kirill's website")
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 babel = Babel()
@@ -18,9 +19,9 @@ login_manager = LoginManager()
 login_manager.login_view = 'users.login'
 login_manager.login_message_category = 'info'
 mail = Mail()
-title = gettext("Kirill's website")
-pyowm_key = os.environ.get('PYOWM_KEY')
 admin = Admin(name=title)
+pyowm_key = os.environ.get('PYOWM_KEY')
+languages = Config.LANGUAGES
 
 google = oauth.register(
     name='google',
@@ -37,7 +38,7 @@ google = oauth.register(
 
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(['en', 'ru', 'de', 'es'])
+    return request.accept_languages.best_match(languages)
 
     
 def create_app(config_class=Config):

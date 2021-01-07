@@ -1,10 +1,10 @@
 from flask import render_template, request, Blueprint, redirect, url_for, flash
 from Website.models import Post
-from Website import title, db
+from Website import title, db, babel, languages
 from Website.main.forms import FeedbackForm
 from Website.models import Feedback
 from flask_login import current_user
-from flask_babel import gettext
+from flask_babel import gettext, refresh
 main = Blueprint('main', __name__)
 
 
@@ -42,6 +42,22 @@ def feedback():
     opinions = Feedback.query.order_by(Feedback.date_posted.desc())
     return render_template('feedback.html', title=gettext('Feedback'),
                            form=form, opinions=opinions)
+
+
+@main.route('/languages/<string:language>')
+def change_language(language):
+
+    @babel.localeselector
+    def get_locale():
+        if language in languages:
+            flash(gettext(f'Language was changed'), 'success')
+            return language
+        else:
+            flash(gettext('No such language supported'), 'warning')
+            return request.accept_languages.best_match(languages)
+
+    refresh()
+    return redirect('/')
 
 
 @main.route("/best_of_the_best_in_the_world")

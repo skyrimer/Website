@@ -1,7 +1,7 @@
 from flask import (render_template, url_for, flash, redirect,
                    request, Blueprint, abort)
 from flask_login import login_user, current_user, logout_user, login_required
-from Website import db, bcrypt, oauth, google
+from Website import db, bcrypt, oauth, google, languages
 from Website.models import User, Post
 from Website.users.forms import (RegistrationForm, LoginForm,
                                  UpdateAccountForm, RequestResetForm,
@@ -85,7 +85,7 @@ def google_authorize():
         db.session.add(user)
         db.session.commit()
         login_user(user, remember=True)
-    flash('Login successful!', 'success')
+    flash(gettext('Login successful!'), 'success')
     return redirect('/')
 
 
@@ -113,13 +113,14 @@ def account(username):
         current_user.email = form.email.data
         current_user.bio = form.bio.data
         db.session.commit()
-        flash('Your Account Has Been Updated!', 'success')
+        flash(gettext('Your Account Has Been Updated!'), 'success')
         return redirect(url_for('users.account', username=current_user.username))
     image_file = url_for('static',
                          filename='profile_pictures/' + user.image_file)
     return render_template('account.html', title=gettext('Account'),
                            image_file=image_file,
-                           form=form, user=user)
+                           form=form, user=user,
+                           languages=languages)
 
 
 @users.route("/user/<string:username>")
