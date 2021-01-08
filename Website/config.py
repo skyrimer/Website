@@ -13,8 +13,8 @@ class Config:
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     FLASK_ADMIN_SWATCH = 'superhero'
-    GOOGLE_OAUTH_CLIENT_ID = "721867642124-4kco7ba22u6h90gc3d0hkok1bdv7eguk.apps.googleusercontent.com"
-    GOOGLE_OAUTH_CLIENT_SECRET = "Q9NwbBSPqCULQg0rLTB5sdfT"
-    GITHUB_OAUTH_CLIENT_ID = "b523d4fdf187588cb1cd"
-    GITHUB_OAUTH_CLIENT_SECRET = "dc55b0b4b510321cbcff6febb84d30fcea0d5385"
+    GOOGLE_OAUTH_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID')
+    GOOGLE_OAUTH_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET')
+    GITHUB_OAUTH_CLIENT_ID = os.environ.get('GITHUB_CLIENT_ID')
+    GITHUB_OAUTH_CLIENT_SECRET = os.environ.get('GITHUB_CLIENT_SECRET')
     LANGUAGES = ['en', 'ru', 'de', 'es']
