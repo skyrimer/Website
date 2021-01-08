@@ -5,6 +5,7 @@ from Website import db, login_manager, admin
 from flask_login import UserMixin, current_user
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.form import SecureForm
+from flask_dance.consumer.storage.sqla import OAuthConsumerMixin
 
 
 @login_manager.user_loader
@@ -39,6 +40,11 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+
+
+class OAuth(OAuthConsumerMixin, db.Model):
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    user = db.relationship(User)
 
 
 class Post(db.Model):

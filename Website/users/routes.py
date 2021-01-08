@@ -1,8 +1,10 @@
 from flask import (render_template, url_for, flash, redirect,
                    request, Blueprint, abort)
 from flask_login import login_user, current_user, logout_user, login_required
-from Website import db, bcrypt, oauth, google, languages
-from Website.models import User, Post
+from Website import db, bcrypt, google, languages, google_blueprint, github_blueprint
+from Website.models import User, Post, OAuth
+from flask_dance.consumer.storage.sqla import SQLAlchemyStorage
+from flask_dance.consumer import oauth_authorized
 from Website.users.forms import (RegistrationForm, LoginForm,
                                  UpdateAccountForm, RequestResetForm,
                                  ResetPasswordForm, ChangePasswordForm)
@@ -10,8 +12,10 @@ from Website.users.utils import (save_picture, reset_password,
                                  my_login, get_user_and_his_posts,
                                  get_picture_from_url)
 from flask_babel import gettext
+from secrets import token_hex
 users = Blueprint('users', __name__)
-
+google_blueprint.backend = SQLAlchemyStorage(OAuth, db.session, user=current_user)
+github_blueprint.backend = SQLAlchemyStorage(OAuth, db.session, user=current_user)
 
 @users.route("/register", methods=['GET', 'POST'])
 def register():
@@ -57,37 +61,71 @@ def logout():
     return redirect(url_for('main.home'))
 
 #! Google registration
-@users.route('/google_login')
-def google_login():
-    google = oauth.create_client('google')  # create the google oauth client
-    redirect_uri = url_for('users.google_authorize', _external=True)
-    return google.authorize_redirect(redirect_uri)
+@users.route("/google_authorize")
+def google_auth():
+    if not current_user.is_authenticated:
+        return redirect(url_for("google.login"))
+    flash('You are already logged in', 'info')
+    return redirect(url_for('main.home'))
 
 
-@users.route('/google_authorize')
-def google_authorize():
-    global user_info
-    google = oauth.create_client('google')  # create the google oauth client
-    token = google.authorize_access_token()  # Access token from google (needed to get user info)
-    resp = google.get('userinfo')  # userinfo contains stuff u specificed in the scrope
-    user_info = resp.json()
+@oauth_authorized.connect_via(google_blueprint)
+def google_logged_in(blueprint, token):
 
-    user = User.query.filter_by(email=user_info['email']).first()
-    if user:
-        login_user(user, remember=True)
-    else:
-        hashed_password = bcrypt.generate_password_hash(user_info['id'])\
+    account_info = blueprint.session.get("/oauth2/v1/userinfo")
+
+    if account_info.ok:
+        account_info_json = account_info.json()
+
+        user = User.query.filter_by(email=account_info_json['email']).first()
+
+        if not user:
+            hashed_password = bcrypt.generate_password_hash(token_hex(16))\
                                 .decode('utf-8')
-        user = User(username=user_info['name'],
-                    email=user_info['email'],
-                    image_file=get_picture_from_url(user_info['picture']),
-                    password=hashed_password)
-        db.session.add(user)
-        db.session.commit()
-        login_user(user, remember=True)
-    flash(gettext('Login successful!'), 'success')
-    return redirect('/')
+            image_file = get_picture_from_url(account_info_json['picture'])
+            user = User(username=account_info_json['name'],
+                        email=account_info_json['email'],
+                        password=hashed_password,
+                        image_file=image_file)
+            db.session.add(user)
+            db.session.commit()
 
+        login_user(user)
+        flash("Login successful", 'info')
+
+    
+#! GitHub registration
+@users.route("/github_authorize")
+def github_auth():
+    if not current_user.is_authenticated:
+        return redirect(url_for("github.login"))
+    flash('You are already logged in', 'info')
+    return redirect(url_for('main.home'))
+
+
+@oauth_authorized.connect_via(github_blueprint)
+def github_logged_in(blueprint, token):
+
+    account_info = blueprint.session.get("/user")
+
+    if account_info.ok:
+        account_info_json = account_info.json()
+
+        user = User.query.filter_by(email=account_info_json['email']).first()
+
+        if not user:
+            hashed_password = bcrypt.generate_password_hash(token_hex(16))\
+                                .decode('utf-8')
+            image_file = get_picture_from_url(account_info_json['avatar_url'])
+            user = User(username=account_info_json['name'],
+                        email=account_info_json['email'],
+                        password=hashed_password,
+                        image_file=image_file)
+            db.session.add(user)
+            db.session.commit()
+
+        login_user(user)
+        flash("Login successful", 'info')
 
 
 @users.route("/account/<string:username>", methods=['GET', 'POST'])

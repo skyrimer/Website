@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-05 16:00+0300\n"
-"PO-Revision-Date: 2021-01-05 16:00+0300\n"
+"POT-Creation-Date: 2021-01-08 16:33+0300\n"
+"PO-Revision-Date: 2021-01-08 16:33+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: de\n"
 "Language-Team: de <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
 
-#: __init__.py:21
+#: __init__.py:15
 msgid "Kirill's website"
 msgstr "Kirill's website"
 #: forms.py:13 forms.py:43 users/forms.py:14
@@ -44,7 +44,7 @@ msgstr "Passwort"
 #: forms.py:38 users/forms.py:60
 msgid "Remember Me"
 msgstr "Behalte mich in erinnerung"
-#: forms.py:39 users/forms.py:61 users/routes.py:49
+#: forms.py:39 users/forms.py:61 users/routes.py:53
 msgid "Login"
 msgstr "Anmeldung"
 #: forms.py:47 users/forms.py:19
@@ -75,7 +75,7 @@ msgstr "Es gibt kein konto mit dieser e-mail. sie müssen sich zuerst registrier
 msgid "password"
 msgstr "Passwort"
 #: forms.py:86 templates/reset_request.html:9 templates/reset_token.html:7
-#: users/forms.py:89 users/routes.py:159 users/routes.py:180
+#: users/forms.py:89 users/routes.py:198 users/routes.py:219
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 #: features/forms.py:8
@@ -168,7 +168,10 @@ msgstr "Kontoinformation"
 #: templates/account.html:99
 msgid "Change password"
 msgstr "Passwort ändern"
-#: templates/change_password.html:8 users/routes.py:145
+#: templates/account.html:106
+msgid "Choose language"
+msgstr "Sprache wählen"
+#: templates/change_password.html:8 users/routes.py:184
 msgid "Change Password"
 msgstr "Passwort ändern"
 #: templates/features.html:30
@@ -201,7 +204,7 @@ msgstr "Es gibt keine beiträge :("
 #: templates/layout.html:27 templates/layout.html:81
 msgid "Home"
 msgstr "Zuhause"
-#: templates/layout.html:40 users/routes.py:120
+#: templates/layout.html:40 users/routes.py:158
 msgid "Account"
 msgstr "Konto"
 #: templates/layout.html:43
@@ -213,7 +216,7 @@ msgstr "Ausloggen"
 #: templates/layout.html:50
 msgid "Log in"
 msgstr "Einloggen"
-#: templates/layout.html:53 templates/register.html:8 users/routes.py:33
+#: templates/layout.html:53 templates/register.html:8 users/routes.py:37
 msgid "Register"
 msgstr "Registrieren"
 #: templates/layout.html:77
@@ -238,12 +241,15 @@ msgstr "Alles wird geheim gehalten :)"
 msgid "Click"
 msgstr "Klicken"
 #: templates/register.html:97
-msgid "Login with google"
-msgstr "Loggen sie sich mit google ein"
+msgid "Login with Google"
+msgstr "Melden sie sich mit google an"
 #: templates/register.html:101
+msgid "Login with GitHub"
+msgstr "Loggen sie sich mit github ein"
+#: templates/register.html:105
 msgid "Already Have An Account?"
 msgstr "Sie haben bereits ein konto?"
-#: templates/register.html:103
+#: templates/register.html:107
 msgid "Sign In"
 msgstr "Anmelden"
 #: templates/user_posts.html:31
@@ -314,18 +320,21 @@ msgstr "Neues passwort"
 #: users/forms.py:93
 msgid "Wrong password!"
 msgstr "Falsches passwort!"
-#: users/routes.py:31
+#: users/routes.py:35
 msgid "Your Account Has Been Created!"
 msgstr "Ihr konto wurde erstellt!"
-#: users/routes.py:48
+#: users/routes.py:52
 msgid "Login Unsuccessful. Please Check Email and Password"
 msgstr "Anmeldung nicht erfolgreich. bitte überprüfen sie e-mail und passwort"
-#: users/routes.py:142
+#: users/routes.py:154
+msgid "Your Account Has Been Updated!"
+msgstr "Dein konto wurde aktualisiert!"
+#: users/routes.py:181
 msgid "The password has been changed successfully!"
 msgstr "Das passwort wurde erfolgreich geändert!"
-#: users/routes.py:169
+#: users/routes.py:208
 msgid "That is an invalid or expired token"
 msgstr "Das ist ein ungültiges oder abgelaufenes token"
-#: users/routes.py:177
+#: users/routes.py:216
 msgid "Your password has been updated! You are now able to log in"
 msgstr "Ihr passwort wurde aktualisiert! sie können sich jetzt anmelden"
