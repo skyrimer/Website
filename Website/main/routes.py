@@ -53,7 +53,9 @@ def change_language(language):
             return language
         else:
             return request.accept_languages.best_match(languages)
-
+    if current_user.is_authenticated:
+        current_user.language = get_locale()
+        db.session.commit()
     refresh()
     return redirect('/')
 

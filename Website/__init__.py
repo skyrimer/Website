@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_babel import Babel, gettext
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
 from flask_mail import Mail
 from flask_view_counter import ViewCounter
 from flask_admin import Admin
@@ -28,7 +28,10 @@ github_blueprint = make_github_blueprint()
 
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(languages)
+    if current_user.is_authenticated:
+        return current_user.language
+    else:
+        return request.accept_languages.best_match(languages)
 
     
 def create_app(config_class=Config):
