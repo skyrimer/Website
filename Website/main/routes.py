@@ -30,8 +30,7 @@ def feedback():
     if current_user.is_authenticated:
         form = FeedbackForm()
         if request.method == "POST" and form.validate_on_submit:
-            feedback = Feedback(title=form.title.data,
-                                content=form.feedback_text.data,
+            feedback = Feedback(content=form.feedback_text.data,
                                 _user=current_user)
             db.session.add(feedback)
             db.session.commit()

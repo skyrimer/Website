@@ -18,23 +18,17 @@
 </head>
 
 <body>
-  <div id="scrollPath"></div>
+    <button class="btn-grad" onclick="history.back()">Go back</button>
   <div class="scene">
     <div class="rocket">
         <img src="{{ url_for('static', filename='/rocket/rocket.png') }}" alt="Here should be a rocket">
     </div>
     </div>
 <script>
-    alert('Press Esc to go back')
-    document.addEventListener('keydown', function(event) {
-    if (event.code == 'Escape') {
-        history.back();
-    }
-    });
     document.addEventListener("mousemove", function(e){
         var rocket = document.querySelector('.rocket')
-        rocket.style.left = e.offsetX + 'px'
-        rocket.style.top = e.offsetY + 'px'
+        rocket.style.left = e.offsetX - 36 + 'px'
+        rocket.style.top = e.offsetY - 50 + 'px'
     })
 
     function stars() {
@@ -43,6 +37,7 @@
         let i = 0;
         while (i < count) {
             let star = document.createElement('i')
+            star.style.zIndex = 100
             let x = Math.floor(Math.random() * (window.innerWidth - 5));
 
             let duration = Math.random() * 3
