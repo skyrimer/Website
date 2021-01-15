@@ -102,14 +102,6 @@
                         <div class="form-group">
                             {{ form.submit(class="btn btn-primary font-weight-bold") }}
                         </div>
-                        <div class="dropdown">
-                            <button class="btn btn-dark">{{ _("Choose language") }}</button>
-                            <div class="bg-secondary dropdown-content ">
-                                {% for language in languages %}
-                                    <a href="/languages/{{ language }}">{{ language }}</a>
-                                {% endfor %}
-                            </div>
-                          </div>
                     </fieldset>
                 </form>
             {% endif %}

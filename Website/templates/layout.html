@@ -20,41 +20,77 @@
 
 <body>
   <div id="scrollPath"></div>
-  <div class="top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 shadow-sm bg-navbar">
-    <h4 class="my-0 mr-md-auto font-weight-normal text-white">{{ title }}</h4>
-    <nav class="my-2 my-md-0 mr-md-3 font-weight-bold">
-      <a class="btn btn-outline-light" href="{{ url_for('main.home') }}">
-        {{  _("Home")  }}
-      </a>
-      <a class="btn btn-outline-light" href="{{ url_for('main.about') }}">
-        {{  _("About me")  }}
-      </a>
-      <a class="btn btn-outline-light" href="{{ url_for('main.feedback') }}">
-        {{  _("Feedback")  }}
-      </a>
-      <a class="btn btn-outline-warning" href="{{ url_for('features.my_features') }}">
-        {{  _("Features")  }}
-      </a>
-      {% if current_user.is_authenticated %}
-        <a class="btn btn-outline-primary" href="{{ url_for('users.account', username=current_user.username) }}">
-          {{  _("Account")  }}
-        </a>
-        <a class="btn btn-outline-primary" href="{{ url_for('posts.create_post') }}">
-          {{  _("New post")  }}
-        </a>
-        <a class="btn btn-outline-danger" href="{{ url_for('users.logout') }}">
-          {{  _("Log out")  }}
-        </a>
-      {% else %}
-        <a class="btn btn-outline-primary" href="{{ url_for('users.login') }}">
-          {{  _("Log in")  }}
-        </a>
-        <a class="btn btn-outline-success" href="{{ url_for('users.register', title='Register') }}">
-          {{  _("Register")  }}
-        </a>
-      {% endif %}
-    </nav>
-  </div>
+  <nav class="navbar navbar-dark bg-navbar navbar-expand-lg p-3 px-md-4">
+    <h4 class="font-weight-normal text-white">{{ title }}</h4>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav m-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{{ url_for('main.home') }}">
+            {{  _("Home")  }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="{{ url_for('main.about') }}">
+            {{  _("About me")  }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="{{ url_for('main.feedback') }}">
+            {{  _("Feedback")  }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-warning" href="{{ url_for('features.my_features') }}">
+            {{  _("Features")  }}
+          </a>
+        </li>
+        {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{{ url_for('users.account', username=current_user.username) }}">
+              {{  _("Account")  }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{{ url_for('posts.create_post') }}">
+              {{  _("New post")  }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="{{ url_for('users.logout') }}">
+              {{  _("Log out")  }}
+            </a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{{ url_for('users.login') }}">
+              {{  _("Log in")  }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{{ url_for('users.register', title='Register') }}">
+              {{  _("Register")  }}
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+      <div class="form-inline">
+        <div class="dropdown">
+          <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Choose language
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/languages/en">English</a>
+            <a class="dropdown-item" href="/languages/ru">Русский</a>
+            <a class="dropdown-item" href="/languages/de">Deutsch</a>
+            <a class="dropdown-item" href="/languages/es">Español</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       {% for category, message in messages %}
