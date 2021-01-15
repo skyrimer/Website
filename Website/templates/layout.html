@@ -107,31 +107,23 @@
   <div class="container">
     {% block content %}{% endblock %}
   </div>
-  <footer class="my-5 pt-5 text-muted text-small">
-    <div class="container">
-      <p class="mb-1 font-weight-bold text-dark">
-        {{  _("Thank's for watching)")  }}
-      </p>
-      <ul class="list-inline font-weight-bold">
-        <li class="list-inline-item">
-          <a href="{{ url_for('main.home', title=title) }}">{{  _("Home")  }}</a>
-        </li>
-        <li class="list-inline-item">
-          <a href="{{ url_for('main.about', title='About me') }}">{{  _("About me")  }}</a>
-        </li>
-      </ul>
-      <ul class="list-inline">
-        <a target="_blank" href="https://vk.com/idnforever">
-          <img class="rounded-circle article-img" width="30" height="30" src="{{ url_for('static', filename='Logos/' + 'vk.jpg') }}">
-        </a>
-        <a target="_blank" href="https://www.instagram.com/silent_kirill/">
-          <img class="rounded-circle article-img" width="30" height="30" src="{{ url_for('static', filename='Logos/' + 'instagram.jpg') }}">
-        </a>
-        <a target="_blank" href="mailto:kirillswebsite@gmail.com">
-          <img class="rounded-circle article-img" width="30" height="30" src="{{ url_for('static', filename='Logos/' + 'gmail.jpg') }}">
-        </a>
-      </ul>
-    </div>
+  <footer class="container my-5 pt-5  text-muted text-small">
+    <p class="mb-2 font-weight-bold text-dark">
+      {{  _("Thank's for watching)")  }}
+    </p>
+    <div class="list-inline">
+      <a target="_blank" href="https://vk.com/idnforever">
+        <img class="rounded-circle article-img" width="30" height="30" src="{{ url_for('static', filename='Logos/vk.jpg') }}">
+      </a>
+      <a target="_blank" href="https://www.instagram.com/silent_kirill/">
+        <img class="rounded-circle article-img" width="30" height="30" src="{{ url_for('static', filename='Logos/instagram.jpg') }}">
+      </a>
+      <a target="_blank" href="mailto:kirillswebsite@gmail.com">
+        <img class="rounded-circle article-img" width="30" height="30" src="{{ url_for('static', filename='Logos/gmail.jpg') }}">
+      </a>
+      <a target="_blank" href="https://github.com/skyrimer">
+        <img class="rounded-circle article-img bg-light" width="30" height="30" src="{{ url_for('static', filename='Logos/GitHub-dark.png') }}">
+      </a>
   </footer>
 
     <!-- Optional JavaScript -->
@@ -140,5 +132,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
-
 </html>
