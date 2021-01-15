@@ -58,7 +58,7 @@ body {
 }
 
 .hover-crossed li a:hover {
-    text-decoration: overline;
+    text-decoration: line-through;
     animation: glitch 1s linear infinite;
 }
 
