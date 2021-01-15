@@ -57,6 +57,22 @@ body {
     background:#0F2027;
 }
 
+.hover-crossed li a:hover {
+    text-decoration: overline;
+    animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
 /* Passoword Generator */
 .inputBox {
     position: relative;
