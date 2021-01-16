@@ -42,15 +42,14 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     form = LoginForm()
-    if request.method == "GET":
-        return render_template('login.html', form=form)
-    if form.validate_on_submit() and my_login(form):
-        login_user(my_login(form), remember=form.remember.data)
-        flash('Login successful', 'success')
-        return redirect(url_for('main.home'))
-    else:
-        flash(gettext('Login Unsuccessful. Please Check Email and Password'), 'danger')
-    return render_template('login.html', title=gettext('Login'), form=form)
+    if form.validate_on_submit():
+        if my_login(form):
+            login_user(my_login(form), remember=form.remember.data)
+            flash('Login successful', 'success')
+            return redirect(url_for('main.home'))
+        else:
+            flash(gettext('Login Unsuccessful. Please Check Email and Password'), 'danger')
+    return render_template('login.html', title='Log in', form=form)
 
 
 @users.route("/logout")

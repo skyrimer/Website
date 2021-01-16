@@ -5,8 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--  CSS -->
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <!-- Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png')}}">
@@ -21,11 +23,14 @@
 <body>
   <div id="scrollPath"></div>
   <nav class="navbar navbar-dark bg-navbar navbar-expand-lg p-3 px-md-4">
-    <h4 class="font-weight-normal text-white">{{ title }}</h4>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="navbar-brand mb-0 h1">
+      <img src="{{ url_for('static', filename='icons/apple-touch-icon.png')}}" alt="" width="30" height="24" class="d-inline-block align-top">
+      {{ title }}
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav m-auto hover-crossed">
         <li class="nav-item">
           <a class="nav-link text-white" href="{{ url_for('main.home') }}">
@@ -76,30 +81,26 @@
           </li>
         {% endif %}
       </ul>
-      <div class="form-inline">
-        <div class="dropdown">
-          <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Choose language
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/languages/en">English</a>
-            <a class="dropdown-item" href="/languages/ru">Русский</a>
-            <a class="dropdown-item" href="/languages/de">Deutsch</a>
-            <a class="dropdown-item" href="/languages/es">Español</a>
-          </div>
-        </div>
+      <div class="nav-item dropdown" style="width: 170px;">
+        <a class="btn btn-info btn-sm nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Choose language
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="/languages/en">English</a></li>
+          <li><a class="dropdown-item" href="/languages/ru">Русский</a></li>
+          <li><a class="dropdown-item" href="/languages/de">Deutsch</a></li>
+          <li><a class="dropdown-item" href="/languages/es">Español</a></li>
+        </ul>
       </div>
     </div>
   </nav>
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       {% for category, message in messages %}
-        <div class="alert alert-{{ category }} alert-dismissible fade show">
-          {{ message }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
       {% endfor %}
     {% endif %}
   {% endwith %}
@@ -107,29 +108,28 @@
   <div class="container">
     {% block content %}{% endblock %}
   </div>
-  <footer class="container my-5 pt-5  text-muted text-small">
-    <p class="mb-2 font-weight-bold text-dark">
-      {{  _("Thank's for watching)")  }}
-    </p>
-    <div class="list-inline">
+  <footer class="navbar fixed-bottom d-flex flex-row-reverse">
+    <div class="h6 p-2 flex-shrink-1 bd-highlight">
+      <p class="font-weight-bold text-dark">
+        {{  _("↓Contact me↓")  }}
+      </p>
       <a target="_blank" href="https://vk.com/idnforever">
-        <img class="rounded-circle article-img" width="30" height="30" src="{{ url_for('static', filename='Logos/vk.jpg') }}">
+        <img class="rounded-circle" width="30" height="30" src="{{ url_for('static', filename='Logos/vk.jpg') }}">
       </a>
       <a target="_blank" href="https://www.instagram.com/silent_kirill/">
-        <img class="rounded-circle article-img" width="30" height="30" src="{{ url_for('static', filename='Logos/instagram.jpg') }}">
+        <img class="img-fluid rounded-circle" width="30" height="30" src="{{ url_for('static', filename='Logos/instagram.jpg') }}">
       </a>
       <a target="_blank" href="mailto:kirillswebsite@gmail.com">
-        <img class="rounded-circle article-img" width="30" height="30" src="{{ url_for('static', filename='Logos/gmail.jpg') }}">
+        <img class="img-fluid rounded-circle" width="30" height="30" src="{{ url_for('static', filename='Logos/gmail.jpg') }}">
       </a>
       <a target="_blank" href="https://github.com/skyrimer">
-        <img class="rounded-circle article-img bg-light" width="30" height="30" src="{{ url_for('static', filename='Logos/GitHub-dark.png') }}">
+        <img class="img-fluid rounded-circle bg-light" width="30" height="30" src="{{ url_for('static', filename='Logos/GitHub-dark.png') }}">
       </a>
+    </div>
   </footer>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
   </body>
 </html>

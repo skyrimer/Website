@@ -1,13 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="card rounded border">
-    <img src="{{ url_for('static', filename='about/me.jpg') }}" alt="Avatar">
-    <div class="container">
-        <h2><b>{{  _("Kirill Chekmenev")  }}</b></h2> 
-        <p>{{  _("A good person")  }}</p>
-        <small>
-            {{  _("I am Kirill Chekmenev, and I have made this Website. My native country is Russia, however I am currently studying in a secret place :) Hope everything is good and not lagging")  }}
-        </small>
+  <div class="card" style="width: 500px;">
+    <img src="{{ url_for('static', filename='about/me.jpg') }}" class="card-img-top" alt="My picture">
+    <div class="card-body bg-card">
+      <h5 class="card-title">{{  _("👦Kirill Chekmenev👦")  }}</h5>
+      <ul class="list-group list-group-flush ">
+        <li class="list-group-item list-group-item-action list-group-item-primary">{{ _("1. Creater of this Website") }}</li>
+        <li class="list-group-item list-group-item-action list-group-item-success">{{ _("2. Good person") }}</li>
+        <li class="list-group-item list-group-item-action list-group-item-danger">{{ _("3. Hater of one-line operations in Python") }}</li>
+      </ul>
+      <p class="card-body">
+        {{  _("I am Kirill Chekmenev, and I have made this owesome Website.
+               My native country is Russia, and I have been learning programming for more than 3 years.
+               As you can see, the rate of studying is lower than turtle's movement.
+               Good day 😃")  }}
+      </p>
     </div>
-</div>
+  </div>
 {% endblock content %}

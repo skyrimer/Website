@@ -2,7 +2,7 @@ header {
     padding-bottom: 30px;
 }
 footer {
-    padding: 30px;
+    background-color: transparent;
 }
 body {
     background: #00C9FF;  /* fallback for old browsers */
@@ -13,6 +13,7 @@ body {
     */
     background-size: 200%;
     animation: gradient 20s ease infinite;
+    min-height: 100vh;
 }
 
 @keyframes gradient {
@@ -59,18 +60,19 @@ body {
 
 .hover-crossed li a:hover {
     text-decoration: line-through;
+    transform: translate(0,-3px);
     animation: glitch 1s linear infinite;
 }
 
 @keyframes glitch{
   2%,64%{
-    transform: translate(2px,-3px) skew(0deg);
+    transform: translate(3px,-3px);
   }
   4%,60%{
-    transform: translate(-2px,-3px) skew(0deg);
+    transform: translate(-4px,-3px);
   }
   62%{
-    transform: translate(0,0) skew(5deg); 
+    transform: translate(0,-3px); 
   }
 }
 /* Passoword Generator */
@@ -115,30 +117,11 @@ body {
 }
 
 
-/* Card */
-.card {
-    width: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.card img {
-    width: 500px;
-}
-.card .container {
-    padding: 2px 16px;
+/* about-card */
+.bg-card {
+    cursor: default;
     background: #9796f0;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #fbc7d4, #9796f0);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #fbc7d4, #9796f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.card .container h2,
-.card .container p {
-    font-style: italic;
-}
-
-.card .container p,
-.card .container small {
-    font-size: 15px;
 }
 

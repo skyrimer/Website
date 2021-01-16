@@ -38,7 +38,9 @@ def feedback():
             flash(gettext('Thank you for yor opinion!)'), 'success')
     else:
         form = None
-    opinions = Feedback.query.order_by(Feedback.date_posted.desc())
+    page = request.args.get('page', 1, type=int)
+    opinions = Feedback.query.order_by(Feedback.date_posted.desc())\
+                       .paginate(page=page, per_page=5)
     return render_template('feedback.html', title=gettext('Feedback'),
                            form=form, opinions=opinions)
 
