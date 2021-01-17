@@ -19,6 +19,7 @@
 
 <body>
     <button class="btn-grad" onclick="history.back()">Go back</button>
+    <embed src="{{ url_for('static', filename='/rocket/background_sound.mp3') }}" hidden="True" autostart="true" loop="True"></embed>
   <div class="scene">
     <div class="rocket">
         <img src="{{ url_for('static', filename='/rocket/rocket.png') }}" alt="Here should be a rocket">
@@ -40,12 +41,12 @@
             star.style.zIndex = 100
             let x = Math.floor(Math.random() * (window.innerWidth - 5));
 
-            let duration = Math.random() * 3
+            let duration = Math.random() * 2
             let h = Math.random() * 100;
 
             star.style.left = x + 'px'
             star.style.width = 1 + 'px'
-            star.style.height = 50 + h + 'px'
+            star.style.height = 30 + h + 'px'
             star.style.animationDuration = duration + 's'
 
             scene.appendChild(star);
