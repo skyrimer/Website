@@ -40,7 +40,7 @@
       </div>
     </div>
     {% if form %}
-      <form method="POST" action="" enctype="multipart/form-data" style="padding-top: 20px;">
+      <form method="POST" action="" enctype="multipart/form-data" style="padding-top: 20px;" novalidate>
           {{ form.hidden_tag() }}
           <fieldset class="mb-3 h5">
             <h2>{{  _("Account Info")  }}</h2>
@@ -104,9 +104,7 @@
                 {{  _("Change password")  }}
               </a>
             </div>
-            <div class="mb-3">
-              {{ form.submit(class="btn btn-primary font-weight-bold") }}
-            </div>
+            {{ form.submit(class="btn btn-primary font-weight-bold mb-3") }}
           </fieldset>
       </form>
     {% endif %}

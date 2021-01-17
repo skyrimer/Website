@@ -9,16 +9,15 @@ from Website.models import User
 from Website import bcrypt
 from flask_babel import gettext
 
-
 class UpdateAccountForm(FlaskForm):
-    username = StringField(gettext('Username'),
+    username = StringField('Username',
                            validators=[DataRequired(), Length(min=2, max=20)])
-    email = StringField(gettext('Email'),
+    email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    bio = TextAreaField(gettext('Bio (optional)'))
+    bio = TextAreaField('Bio (optional)')
     picture = FileField(gettext('Update Profile Picture'),
                         validators=[FileAllowed(['jpg', 'png'])])
-    submit = SubmitField(gettext('Update'))
+    submit = SubmitField('Update')
 
     def validate_username(self, username):
         if username.data != current_user.username:
@@ -34,11 +33,11 @@ class UpdateAccountForm(FlaskForm):
 
 
 class RegistrationForm(UpdateAccountForm):
-    password = PasswordField(gettext('Password'), validators=[DataRequired()])
-    confirm_password = PasswordField(gettext('Confirm Password'),
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(),
                                                  EqualTo('password')])
-    submit = SubmitField(gettext('Sign Up'))
+    submit = SubmitField('Sign Up')
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
@@ -54,39 +53,39 @@ class RegistrationForm(UpdateAccountForm):
 
 
 class LoginForm(FlaskForm):
-    email_or_username = StringField(gettext('Email or Username'),
+    email_or_username = StringField('Email or Username',
                                  validators=[DataRequired()])
-    password = PasswordField(gettext('Password'), validators=[DataRequired()])
-    remember = BooleanField(gettext('Remember Me'), default=True)
-    submit = SubmitField(gettext('Login'))
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember = BooleanField('Remember Me', default=True)
+    submit = SubmitField('Login')
 
 
 class RequestResetForm(FlaskForm):
-    email = StringField(gettext('Email'),
+    email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    submit = SubmitField(gettext('Request Password Reset'))
+    submit = SubmitField('Request Password Reset')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is None:
-            raise ValidationError('There is no account with that email. You must register first.')
+            raise ValidationError(gettext('There is no account with that email. You must register first.'))
 
 
 class ResetPasswordForm(FlaskForm):
-    password = PasswordField(gettext('Password'), validators=[DataRequired()])
-    confirm_password = PasswordField(gettext('Confirm Password'),
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(),
                                                  EqualTo('password')])
     submit = SubmitField('Reset Password')
 
 
 class ChangePasswordForm(FlaskForm):
-    old_password = PasswordField(gettext('Old Password'), validators=[DataRequired()])
-    new_password = PasswordField(gettext('New Password'), validators=[DataRequired()])
-    confirm_password = PasswordField(gettext('Confirm Password'),
+    old_password = PasswordField('Old Password', validators=[DataRequired()])
+    new_password = PasswordField('New Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password',
                                       validators=[DataRequired(),
                                       EqualTo('new_password')])
-    submit = SubmitField(gettext('Reset Password'))
+    submit = SubmitField('Reset Password')
 
     def validate_old_password(self, old_password):
         if not bcrypt.check_password_hash(current_user.password, self.old_password.data):

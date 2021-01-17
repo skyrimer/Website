@@ -1,30 +1,29 @@
 {% extends "layout.html" %}
 {% block content %}
 {% if form %}
-    
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <div class="mb-3 w-50 h5">
-            {{ form.feedback_text.label(class="form-control-label text-center") }}
-            {% if form.feedback_text.errors %}
-                {{ form.feedback_text(class="form-control form-control-lg is-invalid",
-                                    placeholder="Enter feedback",
-                                    autofocus=True) }}
-                <div class="invalid-feedback">
-                    {% for error in form.feedback_text.errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-            {% else %}
-                {{ form.feedback_text(class="form-control form-control-lg",
-                                       placeholder="Enter feedback",
-                                       autofocus=True)  }}
-            {% endif %}
+  <form method="POST" action="" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="mb-3 w-50 h5">
+      {{ form.feedback_text.label(class="form-control-label text-center") }}
+      {% if form.feedback_text.errors %}
+        {{ form.feedback_text(class="form-control form-control-lg is-invalid",
+                              placeholder="Enter feedback",
+                              autofocus=True) }}
+        <div class="invalid-feedback">
+          {% for error in form.feedback_text.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
         </div>
-        <div class="mb-3">
-            {{ form.submit(class="btn btn-outline-primary font-weight-bold") }}
-        </div>
-    </form>
+      {% else %}
+        {{ form.feedback_text(class="form-control form-control-lg",
+                              placeholder="Enter feedback",
+                              autofocus=True)  }}
+      {% endif %}
+    </div>
+    <div class="mb-3">
+      {{ form.submit(class="btn btn-outline-primary font-weight-bold") }}
+    </div>
+  </form>
 {% endif %}
 {% if opinions.items[-1] %}
     <h1>{{  _("People's opinions")  }}</h1>
