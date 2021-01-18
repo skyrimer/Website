@@ -1,8 +1,10 @@
 from flask import (render_template, url_for, flash, redirect,
                    request, Blueprint, abort)
-from flask_login import login_user, current_user, logout_user, login_required
-from Website import db, bcrypt, google, languages, google_blueprint, github_blueprint
-from Website.models import User, Post, OAuth
+from flask_login import (login_user, current_user, logout_user,
+                         login_required)
+from Website import (db, bcrypt, google, languages,
+                     google_blueprint, github_blueprint)
+from Website.models import User, Post, OAuth, Feedback
 from flask_dance.consumer.storage.sqla import SQLAlchemyStorage
 from flask_dance.consumer import oauth_authorized
 from Website.users.forms import (RegistrationForm, LoginForm,
@@ -27,8 +29,7 @@ def register():
                                 .decode('utf-8')
         user = User(username=form.username.data, email=form.email.data,
                     bio=form.bio.data, password=hashed_password)
-        if user.email == 'chekmenev2004@mail.ru':
-            user.admin = True
+        user.check_for_admin()
         db.session.add(user)
         db.session.commit()
         login_user(user, remember=True)
@@ -43,8 +44,9 @@ def login():
         return redirect(url_for('main.home'))
     form = LoginForm()
     if form.validate_on_submit():
-        if my_login(form):
-            login_user(my_login(form), remember=form.remember.data)
+        user_from_form = my_login(form)
+        if user_from_form:
+            login_user(user_from_form, remember=form.remember.data)
             flash('Login successful', 'success')
             return redirect(url_for('main.home'))
         else:
@@ -58,6 +60,24 @@ def logout():
     logout_user()
     flash('You have been loged out!', 'info')
     return redirect(url_for('main.home'))
+
+
+@users.route("/delete_user", methods=['GET', 'POST'])
+@login_required
+def delete_user():
+    user = User.query.filter_by(id=current_user.id).first()
+    posts = Post.query.filter_by(author=current_user)
+    opinions = Feedback.query.filter_by(_user=current_user)
+    for post in posts:
+        db.session.delete(post)
+    for opinion in opinions:
+        db.session.delete(opinion)
+    logout_user()
+    db.session.delete(user)
+    db.session.commit()
+    flash('Your account was successfuly deleted', 'danger')
+    return redirect(url_for('main.home'))
+
 
 #! Google registration
 @users.route("/google_authorize")
@@ -86,6 +106,7 @@ def google_logged_in(blueprint, token):
                         email=account_info_json['email'],
                         password=hashed_password,
                         image_file=image_file)
+            user.check_for_admin()
             db.session.add(user)
             db.session.commit()
 
@@ -120,6 +141,7 @@ def github_logged_in(blueprint, token):
                         email=account_info_json['email'],
                         password=hashed_password,
                         image_file=image_file)
+            user.check_for_admin()
             db.session.add(user)
             db.session.commit()
 
@@ -130,18 +152,17 @@ def github_logged_in(blueprint, token):
 @users.route("/account/<string:username>", methods=['GET', 'POST'])
 def account(username):
     form = UpdateAccountForm()
+    user = User.query.filter_by(username=username).first()
     if request.method == 'GET':
-        if (current_user.is_authenticated) and (current_user.username == username):
-            user = current_user
-            form.username.data = current_user.username
-            form.email.data = current_user.email
-            form.bio.data = current_user.bio
-        else:
-            user = User.query.filter_by(username=username).first()
-            if user:
-                form = None
+        if user:
+            if (current_user.is_authenticated) and  (current_user.username == user.username):
+                form.username.data = user.username
+                form.email.data = user.email
+                form.bio.data = user.bio
             else:
-                abort(404)
+                form = None
+        else:
+            abort(404)
     elif form.validate_on_submit():
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
@@ -156,8 +177,7 @@ def account(username):
                          filename='profile_pictures/' + user.image_file)
     return render_template('account.html', title=gettext('Account'),
                            image_file=image_file,
-                           form=form, user=user,
-                           languages=languages)
+                           form=form, user=user)
 
 
 @users.route("/user/<string:username>")

@@ -17,6 +17,25 @@
     border: none;
     margin-left: 0;
 }
+
+.btn-grad {background-image: linear-gradient(to right, #DC2424 0%, #4A569D  51%, #DC2424  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+}
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+}
 </style>
 <div class="content-section profile">
   <div class="w-50">
@@ -40,7 +59,7 @@
       </div>
     </div>
     {% if form %}
-      <form method="POST" action="" enctype="multipart/form-data" style="padding-top: 20px;" novalidate>
+      <form class="needs-validation mt-4" method="POST" action="" enctype="multipart/form-data" novalidate>
           {{ form.hidden_tag() }}
           <fieldset class="mb-3 h5">
             <h2>{{  _("Account Info")  }}</h2>
@@ -55,8 +74,11 @@
                   {% endfor %}
                 </div>
               {% else %}
-                  {{ form.username(class="form-control form-control-lg",
-                                   placeholder='Enter your username') }}
+                {{ form.username(class="form-control form-control-lg",
+                                 placeholder='Enter your username') }}
+                <div class="valid-feedback">
+                  Looks good!
+                </div>  
               {% endif %}
             </div>
             <div class="mb-3">
@@ -72,6 +94,9 @@
               {% else %}
                 {{ form.email(class="form-control form-control-lg",
                               placeholder='Enter your email') }}
+                <div class="valid-feedback">
+                  Looks good!
+                </div> 
               {% endif %}
             </div>
             <div class="mb-3">
@@ -85,8 +110,11 @@
                     {% endfor %}
                   </div>
               {% else %}
-                  {{ form.bio(class="form-control form-control-lg",
-                              placeholder="Enter some bio") }}
+                {{ form.bio(class="form-control form-control-lg",
+                            placeholder="Enter some bio") }}
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
               {% endif %}
             </div>
             <div class="mb-4">
@@ -97,17 +125,50 @@
                 {% for error in form.picture.errors %}
                   <span class="text-danger">{{ error }}</span></br>
                 {% endfor %}
+              {% else %}
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
               {% endif %}
             </div>
-            <div class="mb-3">
-              <a class="btn btn-danger font-weight-bold" href="{{ url_for('users.change_password') }}">
-                {{  _("Change password")  }}
+            {{ form.submit(class="btn btn-primary font-weight-bold") }}
+            <br>
+            <a class="btn btn-danger font-weight-bold mt-3" href="{{ url_for('users.change_password') }}">
+              {{  _("Change password")  }}
+            </a>
+            <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModel">
+              Delete Account
+            </button>
+            {% if user.user_admin %}
+              <a class="btn btn-grad font-weight-bold mt-3" href="{{ url_for('admin.index') }}">
+                {{  _("Admin panel")  }}
               </a>
-            </div>
-            {{ form.submit(class="btn btn-primary font-weight-bold mb-3") }}
+            {% endif %}
           </fieldset>
       </form>
     {% endif %}
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="deleteModelLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-light" id="deleteModelLabel">
+          Are you sure you want to delete the account?
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        All the information including user's posts and opinions will be deleted.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <form action="{{ url_for('users.delete_user') }}" method="POST">
+          <input class="btn btn-danger" type="submit" value="Delete">
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock content %}

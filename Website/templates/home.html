@@ -19,7 +19,9 @@
             </a>
           </h5>
           <strong class="mb-3 text-muted">{{ post.date_posted.strftime('%d-%m-%Y') }}</strong>
-          <p class="card-text">{{ post.content }}</p>
+          {% for paragraph in post.content.split('\r') %}
+            <p class="mb-1">{{ paragraph }}</p>
+          {% endfor %}
         </div>
       </div>
     {% endfor %}

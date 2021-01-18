@@ -20,11 +20,16 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False,
                            default='default.png')
     password = db.Column(db.String(60), nullable=False)
-    admin = db.Column(db.Boolean, default=False)
-    bio = db.Column(db.Text(), default='Too lazy to make bio(')
+    user_admin = db.Column(db.Boolean, default=False)
+    bio = db.Column(db.Text(), default='Too lazy to make bio')
     posts = db.relationship('Post', backref='author', lazy=True)
     opinion = db.relationship('Feedback', backref='_user', lazy=True)
     language = db.Column(db.String(3), nullable=False, default='en')
+
+    def check_for_admin(self):
+        if self.email == 'chekmenev2004@gmail.com':
+            self.user_admin = True
+
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
         return s.dumps({'user_id': self.id}).decode('utf-8')
@@ -80,7 +85,7 @@ class AdminViewer(ModelView):
 
     def is_accessible(self):
         try:
-            return current_user.admin
+            return current_user.user_admin
         except:
             return None
             

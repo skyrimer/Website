@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 {% if form %}
-  <form method="POST" action="" novalidate>
+  <form class="needs-validation" method="POST" action="" novalidate>
     {{ form.hidden_tag() }}
     <div class="mb-3 w-50 h5">
       {{ form.feedback_text.label(class="form-control-label text-center") }}
@@ -10,14 +10,15 @@
                               placeholder="Enter feedback",
                               autofocus=True) }}
         <div class="invalid-feedback">
-          {% for error in form.feedback_text.errors %}
-            <span>{{ error }}</span>
-          {% endfor %}
+          {{ _("Please give a feedback") }}
         </div>
       {% else %}
         {{ form.feedback_text(class="form-control form-control-lg",
                               placeholder="Enter feedback",
                               autofocus=True)  }}
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       {% endif %}
     </div>
     <div class="mb-3">

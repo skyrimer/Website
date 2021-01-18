@@ -1,69 +1,73 @@
 {% extends "layout.html" %}
 {% block content %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/form.css')}}">
-    <div class="content-section">
-        <form method="POST" action="" novalidate>
-            {{ form.hidden_tag() }}
-            <fieldset class="mb-3 w-50 h5">
-                <h1>{{  _("Log In")  }}</h1>
-                <br>
-                <div class="mb-3 " >
-                    {{ form.email_or_username.label(class="form-control-label") }}
-                    {% if form.email_or_username.errors %}
-                        {{ form.email_or_username(class="form-control form-control-lg is-invalid",
-                                                  placeholder="Email or username",
-                                                  autofocus=True) }}
-                        <div class="invalid-feedback">
-                            {% for error in form.email_or_username.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.email_or_username(class="form-control form-control-lg", 
-                                                  placeholder="Email or Username",
-                                                  autofocus=True) }}
-                    {% endif %}
-                </div>
-                <div class="mb-3">
-                    {{ form.password.label(class="form-control-label") }}
-                    {% if form.password.errors %}
-                        {{ form.password(class="form-control form-control-lg is-invalid",
-                                         placeholder="Your password",
-                                         autofocus=True) }}
-                        <div class="invalid-feedback">
-                            {% for error in form.password.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.password(class="form-control form-control-lg",
-                                         placeholder="Your password") }}
-                    {% endif %}
-                </div>
-                <div class="form-check">
-                    {{ form.remember(class="form-check-input") }}
-                    {{ form.remember.label(class="form-check-label") }}
-                </div>
-                <div class="mb-3 mt-3">
-                    {{ form.submit(class="btn btn-outline-primary font-weight-bold") }}
-                    <a class="btn btn-outline-info" href="{{ url_for('users.google_auth') }}" role="button" style="text-transform:none">
-                        <img width="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-                        {{ _("Login with Google")}}
-                      </a>
-                      <a class="btn btn-outline-info" href="{{ url_for('users.github_auth') }}" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large">
-                          <img width="23px" src="{{ url_for('static', filename='Logos/GitHub-light.png') }}" />
-                          {{ _("Login with GitHub")}}
-                      </a>
-                </div>
-                
-                <a class="text-white font-weight-bold mb-3" href="{{ url_for('users.reset_request') }}">
-                    {{  _("Forgot Password?")  }}
-                </a>
-                <br>
-                <a class="text-light font-weight-bold" href="{{ url_for('users.register', title='Register') }}">
-                    {{  _("Register now!!!")}}
-                </a>
-            </fieldset>
-        </form>
-    </div>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/form.css')}}">
+  <div class="content-section">
+    <form class="needs-validation" method="POST" action="" novalidate>
+      {{ form.hidden_tag() }}
+      <fieldset class="mb-3 w-50 h5">
+        <h1>{{  _("Log In")  }}</h1>
+        <div class="mb-3 mt-4" >
+          {{ form.email_or_username.label(class="form-control-label") }}
+          {% if form.email_or_username.errors %}
+            {{ form.email_or_username(class="form-control form-control-lg is-invalid",
+                                      placeholder="Email or username",
+                                      autofocus=True) }}
+            <div class="invalid-feedback">
+              {% for error in form.email_or_username.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.email_or_username(class="form-control form-control-lg", 
+                                      placeholder="Email or Username",
+                                      autofocus=True) }}
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          {% endif %}
+        </div>
+        <div class="mb-3">
+          {{ form.password.label(class="form-control-label") }}
+          {% if form.password.errors %}
+            {{ form.password(class="form-control form-control-lg is-invalid",
+                             placeholder="Your password",
+                             autofocus=True) }}
+            <div class="invalid-feedback">
+              {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.password(class="form-control form-control-lg",
+                             placeholder="Your password") }}
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          {% endif %}
+        </div>
+        <div class="form-check">
+          {{ form.remember(class="form-check-input") }}
+          {{ form.remember.label(class="form-check-label") }}
+        </div>
+        <div class="mb-3 mt-3">
+          {{ form.submit(class="btn btn-outline-primary font-weight-bold") }}
+          <a class="btn btn-outline-info" href="{{ url_for('users.google_auth') }}" role="button" style="text-transform:none">
+            <img width="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+            {{ _("Login with Google")}}
+          </a>
+          <a class="btn btn-outline-info" href="{{ url_for('users.github_auth') }}" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large">
+            <img width="23px" src="{{ url_for('static', filename='Logos/GitHub-light.png') }}" />
+            {{ _("Login with GitHub")}}
+          </a>
+        </div>
+        <a class="text-white font-weight-bold mb-3" href="{{ url_for('users.reset_request') }}">
+          {{  _("Forgot Password?")  }}
+        </a>
+        <br>
+        <a class="text-light font-weight-bold" href="{{ url_for('users.register', title='Register') }}">
+          {{  _("Register now!!!")}}
+        </a>
+      </fieldset>
+    </form>
+  </div>
 {% endblock content %}

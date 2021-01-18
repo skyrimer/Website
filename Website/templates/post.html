@@ -14,22 +14,22 @@
       <br>
       {% if post.author == current_user %}
         <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
-        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#postModal">
           Delete Post
         </button>
       {% endif %}
       <h4 class="mt-3">{{ post.title }}</h4>
       {% for paragraph in post.content.split('\r') %}
-        <p class="article-content">{{ paragraph }}</p>
+        <p class="mb-1">{{ paragraph }}</p>
       {% endfor %}
     </div>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content bg-dark">
         <div class="modal-header">
-          <h5 class="modal-title text-light" id="exampleModalLabel">
+          <h5 class="modal-title text-light" id="postModalLabel">
             Are you sure you want to delete the post?
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

@@ -21,7 +21,7 @@
             <div class="pt-3">
                 {% if weather.status %}
                     {% if weather.status == 1 %}
-                        <h2>{{  _("Unable to find city :(")  }}</h2>
+                        <h2>{{  _("Unable to find city 😱")  }}</h2>
                     {% else %}
                         <h3>{{  _("Weather in")  }} {{ weather.city}}</h3>
                         <h4>{{  _("Status")  }} : {{ weather.detailed_status }}<img src="{{ weather.weather_icon }}" width="40" height="40"></h4>
@@ -34,7 +34,7 @@
                         {% endif %}
                     {% endif %}
                 {% else %}
-                    <h4>{{  _("Unable to show the weather :(")  }}</h4>
+                    <h4>{{  _("Unable to show the weather 😱")  }}</h4>
                 {% endif %}
             </div>
         </div>

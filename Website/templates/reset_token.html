@@ -1,48 +1,54 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST" action="" novalidate>
-            {{ form.hidden_tag() }}
-            <fieldset class="mb-3 w-25 h5">
-                <legend>{{  _("Reset Password")  }}</legend>
-                <br>
-                <div class="mb-3">
-                    {{ form.password.label(class="form-control-label") }}
-                    {% if form.password.errors %}
-                        {{ form.password(class="form-control form-control-lg is-invalid",
-                                         placeholder="Enter new password",
-                                         autofocus=True) }}
-                        <div class="invalid-feedback">
-                            {% for error in form.password.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.password(class="form-control form-control-lg",
-                                         placeholder="Enter new password",
-                                         autofocus=True) }}
-                    {% endif %}
-                </div>
-                <div class="mb-3">
-                    {{ form.confirm_password.label(class="form-control-label") }}
-                    {% if form.confirm_password.errors %}
-                        {{ form.confirm_password(class="form-control form-control-lg is-invalid",
-                                                 placeholder="Confirm new password",
-                                                 autofocus=True) }}
-                        <div class="invalid-feedback">
-                            {% for error in form.confirm_password.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.confirm_password(class="form-control form-control-lg",
-                                                 placeholder="Confirm new password") }}
-                    {% endif %}
-                </div>
-            </fieldset>
-            <div class="mb-3 ">
-                {{ form.submit(class="btn btn-outline-primary font-weight-bold") }}
+  <div class="content-section">
+    <form class="needs-validation" method="POST" action="" novalidate>
+      {{ form.hidden_tag() }}
+      <fieldset class="mb-3 w-25 h5">
+        <legend>{{  _("Reset Password")  }}</legend>
+        <br>
+        <div class="mb-3">
+          {{ form.password.label(class="form-control-label") }}
+          {% if form.password.errors %}
+            {{ form.password(class="form-control form-control-lg is-invalid",
+                             placeholder="Enter new password",
+                             autofocus=True) }}
+            <div class="invalid-feedback">
+              {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
             </div>
-        </form>
-    </div>
+          {% else %}
+            {{ form.password(class="form-control form-control-lg",
+                             placeholder="Enter new password",
+                             autofocus=True) }}
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          {% endif %}
+        </div>
+        <div class="mb-3">
+          {{ form.confirm_password.label(class="form-control-label") }}
+          {% if form.confirm_password.errors %}
+            {{ form.confirm_password(class="form-control form-control-lg is-invalid",
+                                     placeholder="Confirm new password",
+                                     autofocus=True) }}
+            <div class="invalid-feedback">
+              {% for error in form.confirm_password.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.confirm_password(class="form-control form-control-lg",
+                                     placeholder="Confirm new password") }}
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          {% endif %}
+        </div>
+      </fieldset>
+      <div class="mb-3 ">
+        {{ form.submit(class="btn btn-outline-primary font-weight-bold") }}
+      </div>
+    </form>
+  </div>
 {% endblock content %}

@@ -7,7 +7,7 @@ from wtforms.validators import (DataRequired, Length, Email,
 from flask_login import current_user
 from Website.models import User
 from Website import bcrypt
-from flask_babel import gettext
+
 
 class UpdateAccountForm(FlaskForm):
     username = StringField('Username',
@@ -15,7 +15,7 @@ class UpdateAccountForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
     bio = TextAreaField('Bio (optional)')
-    picture = FileField(gettext('Update Profile Picture'),
+    picture = FileField('Update Profile Picture',
                         validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update')
 
@@ -23,13 +23,13 @@ class UpdateAccountForm(FlaskForm):
         if username.data != current_user.username:
             user = User.query.filter_by(username=username.data).first()
             if user:
-                raise ValidationError(gettext('That username is taken. Please choose a different one.'))
+                raise ValidationError('That username is taken. Please choose a different one.')
 
     def validate_email(self, email):
         if email.data != current_user.email:
             user = User.query.filter_by(email=email.data).first()
             if user:
-                raise ValidationError(gettext('That email is taken. Please choose a different one.'))
+                raise ValidationError('That email is taken. Please choose a different one.')
 
 
 class RegistrationForm(UpdateAccountForm):
@@ -42,12 +42,12 @@ class RegistrationForm(UpdateAccountForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError(gettext('That username is taken. Please choose a different one.'))
+            raise ValidationError('That username is taken. Please choose a different one.')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
-            raise ValidationError(gettext('That email is taken. Please choose a different one.'))
+            raise ValidationError('That email is taken. Please choose a different one.')
 
 
 
@@ -68,7 +68,7 @@ class RequestResetForm(FlaskForm):
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is None:
-            raise ValidationError(gettext('There is no account with that email. You must register first.'))
+            raise ValidationError('There is no account with that email. You must register first.')
 
 
 class ResetPasswordForm(FlaskForm):
@@ -89,4 +89,4 @@ class ChangePasswordForm(FlaskForm):
 
     def validate_old_password(self, old_password):
         if not bcrypt.check_password_hash(current_user.password, self.old_password.data):
-                raise ValidationError(gettext('Wrong password!'))
+                raise ValidationError('Wrong password!')
