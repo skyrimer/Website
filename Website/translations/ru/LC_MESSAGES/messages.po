@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-05 13:08+0300\n"
-"PO-Revision-Date: 2021-01-05 13:08+0300\n"
+"POT-Creation-Date: 2021-01-18 19:40+0300\n"
+"PO-Revision-Date: 2021-01-18 19:40+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -19,66 +19,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
 
-#: __init__.py:21
+#: __init__.py:15
 msgid "Kirill's website"
-msgstr "Сайт Kирилла"
-#: forms.py:13 forms.py:43 users/forms.py:14
-msgid "Username"
-msgstr "Имя пользователя"
-#: forms.py:15 forms.py:35 forms.py:45 forms.py:71 users/forms.py:16
-#: users/forms.py:65
-msgid "Email"
-msgstr "Эл. адрес"
-#: forms.py:18 users/forms.py:38 users/forms.py:77 users/forms.py:86
-msgid "Confirm Password"
-msgstr "Подтвердите пароль"
-#: forms.py:21 users/forms.py:41
-msgid "Sign Up"
-msgstr "Подписаться"
-#: forms.py:31 forms.py:61 users/forms.py:33 users/forms.py:51
-msgid "That email is taken. Please choose a different one."
-msgstr "Это письмо принято. пожалуйста, выберите другой."
-#: forms.py:37 forms.py:82 users/forms.py:37 users/forms.py:59
-#: users/forms.py:76
-msgid "Password"
-msgstr "Пароль"
-#: forms.py:38 users/forms.py:60
-msgid "Remember Me"
-msgstr "Запомни меня"
-#: forms.py:39 users/forms.py:61 users/routes.py:49
-msgid "Login"
-msgstr "Авторизоваться"
-#: forms.py:47 users/forms.py:19
-msgid "Update Profile Picture"
-msgstr "Обновить изображение профиля"
-#: forms.py:49 users/forms.py:21
-msgid "Update"
-msgstr "Обновить"
-#: forms.py:55 users/forms.py:27 users/forms.py:46
-msgid "That username is taken. Please choose a different one."
-msgstr "Это имя занято. пожалуйста, выберите другой."
-#: forms.py:65 main/forms.py:7 posts/forms.py:7
-msgid "Title"
-msgstr "Заглавие"
-#: forms.py:66 posts/forms.py:9
-msgid "Content"
-msgstr "Содержание"
-#: forms.py:67 posts/forms.py:11
-msgid "Post"
-msgstr "После"
-#: forms.py:73 users/forms.py:67
-msgid "Request Password Reset"
-msgstr "Запросить сброс пароля"
-#: forms.py:78
-msgid "There is no account with that email. You must register first."
-msgstr "Нет учетной записи с этим адресом электронной почты. вы должны сначала зарегистрироваться."
-#: forms.py:85
-msgid "password"
-msgstr "Пароль"
-#: forms.py:86 templates/reset_request.html:9 templates/reset_token.html:7
-#: users/forms.py:89 users/routes.py:159 users/routes.py:180
-msgid "Reset Password"
-msgstr "Сброс пароля"
+msgstr "Сайт кирилла"
 #: features/forms.py:8
 msgid "Check the password here"
 msgstr "Проверить пароль здесь"
@@ -94,7 +37,7 @@ msgstr "Узнай погоду"
 #: features/routes.py:14
 msgid "Something I can do"
 msgstr "Что-то я могу сделать"
-#: features/routes.py:17 templates/layout.html:36
+#: features/routes.py:17 templates/layout.html:52
 msgid "Features"
 msgstr "Особенности"
 #: features/routes.py:32 templates/features.html:37
@@ -112,22 +55,13 @@ msgstr "Генератор паролей"
 #: features/routes.py:58
 msgid "Face Recognotion"
 msgstr "Распознавание лица"
-#: main/forms.py:9
-msgid "Opinion"
-msgstr "Мнение"
-#: main/forms.py:11
-msgid "Send Feedback"
-msgstr "Отправить отзыв"
-#: main/forms.py:13 posts/forms.py:13
-msgid "Unreal word"
-msgstr "Нереальное слово"
-#: main/routes.py:25 templates/layout.html:30 templates/layout.html:84
+#: main/routes.py:21 templates/layout.html:42
 msgid "About me"
 msgstr "Обо мне"
-#: main/routes.py:39
+#: main/routes.py:34
 msgid "Thank you for yor opinion!)"
 msgstr "Спасибо за ваше мнение!)"
-#: main/routes.py:43 templates/layout.html:33
+#: main/routes.py:40 templates/layout.html:47
 msgid "Feedback"
 msgstr "Обратная связь"
 #: posts/routes.py:20
@@ -146,30 +80,42 @@ msgstr "Обновить сообщение"
 msgid "Your Post Has Been Deleted!"
 msgstr "Ваш пост был удален!"
 #: templates/about.html:6
-msgid "Kirill Chekmenev"
-msgstr "Кирилл Чекменёв"
-#: templates/about.html:7
-msgid "A good person"
-msgstr "Хороший человек"
+msgid "👦Kirill Chekmenev👦"
+msgstr "👦kirill chekmenev👦"
+#: templates/about.html:8
+msgid "1. Creater of this Website"
+msgstr "1. создатель этого веб-сайта"
 #: templates/about.html:9
+msgid "2. Good person"
+msgstr "2. хороший человек"
+#: templates/about.html:10
+msgid "3. Hater of one-line operations in Python"
+msgstr "3. ненавистник однострочных операций в python"
+#: templates/about.html:13
 msgid ""
-msgstr """ Russia, however I am currently studying in a secret place :) Hope "
-"everything is good and not lagging"
+msgstr """               My native country is Russia, and I have been learning "
+"programming for more than 3 years.\n"
+"               As you can see, the rate of studying is lower than "
+"turtle's movement.\n"
+"               Good day 😃"
 msgstr ""
 
-#: templates/account.html:28
+#: templates/account.html:52
 msgid "My posts"
 msgstr "Мои сообщения"
-#: templates/account.html:32
+#: templates/account.html:56
 msgid "User's posts"
 msgstr "Сообщения пользователей"
-#: templates/account.html:42
+#: templates/account.html:65
 msgid "Account Info"
 msgstr "Информация об аккаунте"
-#: templates/account.html:99
+#: templates/account.html:137
 msgid "Change password"
 msgstr "Измени пароль"
-#: templates/change_password.html:8 users/routes.py:145
+#: templates/account.html:144
+msgid "Admin panel"
+msgstr "Панель администратора"
+#: templates/change_password.html:8 users/routes.py:203
 msgid "Change Password"
 msgstr "Измени пароль"
 #: templates/features.html:30
@@ -187,46 +133,55 @@ msgstr "Лучшая песня всех времен"
 #: templates/features.html:58
 msgid "My Calculator"
 msgstr "Мой калькулятор"
+#: templates/feedback.html:13
+msgid "Please give a feedback"
+msgstr "Пожалуйста, оставьте отзыв"
 #: templates/feedback.html:30
 msgid "People's opinions"
 msgstr "Мнения людей"
-#: templates/feedback.html:45
+#: templates/feedback.html:48
 msgid "No opinions :("
 msgstr "Нет мнений :("
 #: templates/home.html:4
 msgid "All posts"
 msgstr "Все сообщения"
-#: templates/home.html:30
+#: templates/home.html:40
 msgid "There aren't any posts :("
 msgstr "Нет постов :("
-#: templates/layout.html:27 templates/layout.html:81
+#: templates/layout.html:37
 msgid "Home"
 msgstr "Главная"
-#: templates/layout.html:40 users/routes.py:120
+#: templates/layout.html:58 users/routes.py:178
 msgid "Account"
 msgstr "Счет"
-#: templates/layout.html:43
+#: templates/layout.html:63
 msgid "New post"
 msgstr "Новый пост"
-#: templates/layout.html:46
+#: templates/layout.html:68
 msgid "Log out"
 msgstr "Выйти"
-#: templates/layout.html:50
+#: templates/layout.html:74
 msgid "Log in"
 msgstr "Авторизоваться"
-#: templates/layout.html:53 templates/register.html:8 users/routes.py:33
+#: templates/layout.html:79 templates/register.html:8 users/routes.py:38
 msgid "Register"
 msgstr "Регистр"
-#: templates/layout.html:77
-msgid "Thank's for watching)"
-msgstr "Спасибо за просмотр)"
+#: templates/layout.html:86
+msgid "Choose language"
+msgstr "Выберите язык"
 #: templates/login.html:8
 msgid "Log In"
 msgstr "Авторизоваться"
-#: templates/login.html:51
+#: templates/login.html:56 templates/register.html:110
+msgid "Login with Google"
+msgstr "Войти через google"
+#: templates/login.html:60 templates/register.html:114
+msgid "Login with GitHub"
+msgstr "Войти через github"
+#: templates/login.html:64
 msgid "Forgot Password?"
 msgstr "Забыли пароль?"
-#: templates/login.html:55
+#: templates/login.html:68
 msgid "Register now!!!"
 msgstr "Зарегистрироваться!!!"
 #: templates/password_check.html:7
@@ -238,24 +193,25 @@ msgstr "Все держится в секрете :)"
 #: templates/password_generator.html:9
 msgid "Click"
 msgstr "Нажмите"
-#: templates/register.html:97
-msgid "Login with google"
-msgstr "Войти через гугл"
-#: templates/register.html:101
+#: templates/register.html:118
 msgid "Already Have An Account?"
 msgstr "Уже есть учетная запись?"
-#: templates/register.html:103
+#: templates/register.html:120
 msgid "Sign In"
 msgstr "Войти в систему"
-#: templates/user_posts.html:31
+#: templates/reset_request.html:9 templates/reset_token.html:7
+#: users/routes.py:217 users/routes.py:238
+msgid "Reset Password"
+msgstr "Сброс пароля"
+#: templates/user_posts.html:39
 msgid "You have no posts :("
 msgstr "У вас нет сообщений :("
-#: templates/user_posts.html:33
+#: templates/user_posts.html:41
 msgid "User has no posts :("
 msgstr "У пользователя нет сообщений :("
 #: templates/weather.html:24
-msgid "Unable to find city :("
-msgstr "Не удалось найти город :("
+msgid "Unable to find city 😱"
+msgstr "Не удалось найти город 😱"
 #: templates/weather.html:26
 msgid "Weather in"
 msgstr "Погода в"
@@ -278,8 +234,8 @@ msgstr "Облака"
 msgid "Heat index"
 msgstr "Индекс тепла"
 #: templates/weather.html:37
-msgid "Unable to show the weather :("
-msgstr "Невозможно показать погоду :("
+msgid "Unable to show the weather 😱"
+msgstr "Невозможно показать погоду 😱"
 #: templates/errors/403.html:4
 msgid "You don't have permission to do that (403)"
 msgstr "У вас нет разрешения на это (403)"
@@ -300,33 +256,21 @@ msgid ""
 msgstr """future"
 msgstr ""
 
-#: users/forms.py:18
-msgid "Bio (optional)"
-msgstr "Биография (необязательно)"
-#: users/forms.py:57
-msgid "Email or Username"
-msgstr "Электронная почта или имя пользователя"
-#: users/forms.py:84
-msgid "Old Password"
-msgstr "Прежний пароль"
-#: users/forms.py:85
-msgid "New Password"
-msgstr "Новый пароль"
-#: users/forms.py:93
-msgid "Wrong password!"
-msgstr "Неправильный пароль!"
-#: users/routes.py:31
+#: users/routes.py:36
 msgid "Your Account Has Been Created!"
 msgstr "Ваша учетная запись была создана!"
-#: users/routes.py:48
+#: users/routes.py:53
 msgid "Login Unsuccessful. Please Check Email and Password"
 msgstr "Войти не удалось. пожалуйста, проверьте электронную почту и пароль"
-#: users/routes.py:142
+#: users/routes.py:174
+msgid "Your Account Has Been Updated!"
+msgstr "Ваш аккаунт был обновлен!"
+#: users/routes.py:200
 msgid "The password has been changed successfully!"
 msgstr "Пароль успешно изменен!"
-#: users/routes.py:169
+#: users/routes.py:227
 msgid "That is an invalid or expired token"
 msgstr "Это недействительный или просроченный токен"
-#: users/routes.py:177
+#: users/routes.py:235
 msgid "Your password has been updated! You are now able to log in"
 msgstr "Ваш пароль был обновлен! теперь вы можете войти в систему"

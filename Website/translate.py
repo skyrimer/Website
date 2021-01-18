@@ -56,7 +56,7 @@ print(Fore.GREEN + 'Pass the init of translations!!!' + Fore.RESET)
 
 # localization
 trans_path = join(f'translations\{language}\LC_MESSAGES', 'messages.po')
-with open(trans_path, 'r') as translation_file:
+with codecs.open(trans_path, 'r', 'utf-8') as translation_file:
     translated_file_data = translate(*get_lines(translation_file))
 with codecs.open(trans_path, 'w', 'utf-8') as translation_file:
     for line in translated_file_data:
