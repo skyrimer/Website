@@ -6,7 +6,7 @@ from flask_login import UserMixin, current_user
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.form import SecureForm
 from flask_dance.consumer.storage.sqla import OAuthConsumerMixin
-
+import os
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -27,7 +27,7 @@ class User(db.Model, UserMixin):
     language = db.Column(db.String(3), nullable=False, default='en')
 
     def check_for_admin(self):
-        if self.email == 'chekmenev2004@gmail.com':
+        if self.email in os.environ['MY_EMAIL'].split():
             self.user_admin = True
 
     def get_reset_token(self, expires_sec=1800):
@@ -88,6 +88,11 @@ class AdminViewer(ModelView):
             return current_user.user_admin
         except:
             return None
+    
+    def inaccessible_callback(self, name, **kwargs):
+        # redirect to login page if user doesn't have access
+        flash('You need to be registerd and admin have permition to enter this page', 'warning')
+        return redirect(url_for('users.login'))
             
 
 admin.add_view(AdminViewer(User, db.session))
