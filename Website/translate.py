@@ -1,7 +1,7 @@
 from googletrans import Translator
 from subprocess import call
 from os.path import join, exists
-from os import remove
+from os import remove, chdir
 from colorama import init, Fore
 import codecs
 init()
@@ -38,6 +38,10 @@ def delete_files():
 
 
 language = input('Enter the language:')
+try:
+    chdir('Website')
+except:
+    pass
 
 # writing the babel.cfg file
 with open('babel.cfg', 'w') as f:
