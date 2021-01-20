@@ -10,4 +10,5 @@ if argv[-1] == 'restart':
         db.create_all()
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=False#,host="192.168.1.44"
+            )

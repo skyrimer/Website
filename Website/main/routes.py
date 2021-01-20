@@ -1,6 +1,6 @@
 from flask import render_template, request, Blueprint, redirect, url_for, flash
 from Website.models import Post
-from Website import title, db, babel, languages
+from Website import title, db, babel, languages, views
 from Website.main.forms import FeedbackForm
 from Website.models import Feedback
 from flask_login import current_user
@@ -9,6 +9,7 @@ main = Blueprint('main', __name__)
 
 
 @main.route("/")
+@views.count
 def home():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date_posted.desc())\
