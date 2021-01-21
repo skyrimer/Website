@@ -313,3 +313,9 @@ audio::-webkit-media-controls-panel {
    color: black;
    text-decoration: none;
  }
+
+@media (max-width: 400px) {
+    .btn-grad{
+        width: 90%;
+    }
+}

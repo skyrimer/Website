@@ -1,153 +1,115 @@
 {% extends "layout.html" %}
 {% block content %}
-<style>
-    body {
-        background: #4568DC;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        color:#fff; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-.profile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.card {
-    background: transparent;
-    border: none;
-    margin-left: 0;
-}
-
-.btn-grad {background-image: linear-gradient(to right, #DC2424 0%, #4A569D  51%, #DC2424  100%)}
-.btn-grad {
-   margin: 10px;
-   padding: 15px 45px;
-   text-align: center;
-   text-transform: uppercase;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;            
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
-}
- .btn-grad:hover {
-   background-position: right center; /* change the direction of the change here */
-   color: #fff;
-   text-decoration: none;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/account.css') }}">
 <div class="content-section profile">
-  <div class="w-50">
-    <div class="card">
-      <img class="rounded-circle account-img"  width="150" height="150"  src="{{ image_file }}"> 
-      <div class="card-body ">
-          <h5 class="card-title">{{ user.username }}</h5>
-          <legend>Email: {{ user.email }}</legend>
-          {% for paragraph in user.bio.split('\r') %}
-            <h5 class="article-content">{{ paragraph }}</h5>
-          {% endfor %}
-          {% if current_user == user %}
-            <a class="btn btn-dark" href="{{ url_for('users.user_posts', username=user.username) }}">
-              {{  _("My posts")  }}
-            </a>
-          {% else %}
-            <a class="btn btn-dark" href="{{ url_for('users.user_posts', username=user.username) }}">
-              {{  _("User's posts")  }}
+  <div class="card">
+    <img class="rounded-circle account-img"  width="150" height="150"  src="{{ image_file }}"> 
+    <div class="card-body ">
+        <h5 class="card-title">{{ user.username }}</h5>
+        <legend>Email: {{ user.email }}</legend>
+        {% for paragraph in user.bio.split('\r') %}
+          <h5 class="article-content">{{ paragraph }}</h5>
+        {% endfor %}
+        {% if current_user == user %}
+          <a class="btn btn-dark" href="{{ url_for('users.user_posts', username=user.username) }}">
+            {{  _("My posts")  }}
+          </a>
+        {% else %}
+          <a class="btn btn-dark" href="{{ url_for('users.user_posts', username=user.username) }}">
+            {{  _("User's posts")  }}
+          </a>
+        {% endif %}
+    </div>
+  </div>
+  {% if form %}
+    <form class="needs-validation mt-4" method="POST" action="" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <fieldset class="mb-3 h5">
+          <h2>{{  _("Account Info")  }}</h2>
+          <div style="padding-top: 10px;" class="mb-3">
+            {{ form.username.label(class="form-control-label") }}
+            {% if form.username.errors %}
+              {{ form.username(class="form-control form-control-lg is-invalid",
+                               placeholder='Enter your username') }}
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.username(class="form-control form-control-lg",
+                               placeholder='Enter your username') }}
+              <div class="valid-feedback">
+                Looks good!
+              </div>  
+            {% endif %}
+          </div>
+          <div class="mb-3">
+            {{ form.email.label(class="form-control-label") }}
+            {% if form.email.errors %}
+              {{ form.email(class="form-control form-control-lg is-invalid",
+                            placeholder='Enter your email') }}
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.email(class="form-control form-control-lg",
+                            placeholder='Enter your email') }}
+              <div class="valid-feedback">
+                Looks good!
+              </div> 
+            {% endif %}
+          </div>
+          <div class="mb-3">
+            {{ form.bio.label(class="form-control-label") }}
+            {% if form.bio.errors %}
+                {{ form.bio(class="form-control form-control-lg is-invalid",
+                            placeholder='Enter your bio') }}
+                <div class="invalid-feedback">
+                  {% for error in form.bio.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+            {% else %}
+              {{ form.bio(class="form-control form-control-lg",
+                          placeholder="Enter some bio") }}
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            {% endif %}
+          </div>
+          <div class="mb-4">
+            {{ form.picture.label() }}
+            <br>
+            {{ form.picture(class="form-control-file small") }}
+            {% if form.picture.errors %}
+              {% for error in form.picture.errors %}
+                <span class="text-danger">{{ error }}</span></br>
+              {% endfor %}
+            {% else %}
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            {% endif %}
+          </div>
+          {{ form.submit(class="btn btn-primary font-weight-bold") }}
+          <br>
+          <a class="btn btn-danger font-weight-bold mt-3" href="{{ url_for('users.change_password') }}">
+            {{  _("Change password")  }}
+          </a>
+          <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModel">
+            Delete Account
+          </button>
+          {% if user.user_admin %}
+            <a class="btn btn-grad font-weight-bold mt-3" href="{{ url_for('admin.index') }}">
+              {{  _("Admin panel")  }}
             </a>
           {% endif %}
-      </div>
-    </div>
-    {% if form %}
-      <form class="needs-validation mt-4" method="POST" action="" enctype="multipart/form-data" novalidate>
-          {{ form.hidden_tag() }}
-          <fieldset class="mb-3 h5">
-            <h2>{{  _("Account Info")  }}</h2>
-            <div style="padding-top: 10px;" class="mb-3">
-              {{ form.username.label(class="form-control-label") }}
-              {% if form.username.errors %}
-                {{ form.username(class="form-control form-control-lg is-invalid",
-                                 placeholder='Enter your username') }}
-                <div class="invalid-feedback">
-                  {% for error in form.username.errors %}
-                    <span>{{ error }}</span>
-                  {% endfor %}
-                </div>
-              {% else %}
-                {{ form.username(class="form-control form-control-lg",
-                                 placeholder='Enter your username') }}
-                <div class="valid-feedback">
-                  Looks good!
-                </div>  
-              {% endif %}
-            </div>
-            <div class="mb-3">
-              {{ form.email.label(class="form-control-label") }}
-              {% if form.email.errors %}
-                {{ form.email(class="form-control form-control-lg is-invalid",
-                              placeholder='Enter your email') }}
-                <div class="invalid-feedback">
-                  {% for error in form.email.errors %}
-                    <span>{{ error }}</span>
-                  {% endfor %}
-                </div>
-              {% else %}
-                {{ form.email(class="form-control form-control-lg",
-                              placeholder='Enter your email') }}
-                <div class="valid-feedback">
-                  Looks good!
-                </div> 
-              {% endif %}
-            </div>
-            <div class="mb-3">
-              {{ form.bio.label(class="form-control-label") }}
-              {% if form.bio.errors %}
-                  {{ form.bio(class="form-control form-control-lg is-invalid",
-                              placeholder='Enter your bio') }}
-                  <div class="invalid-feedback">
-                    {% for error in form.bio.errors %}
-                      <span>{{ error }}</span>
-                    {% endfor %}
-                  </div>
-              {% else %}
-                {{ form.bio(class="form-control form-control-lg",
-                            placeholder="Enter some bio") }}
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-              {% endif %}
-            </div>
-            <div class="mb-4">
-              {{ form.picture.label() }}
-              <br>
-              {{ form.picture(class="form-control-file small") }}
-              {% if form.picture.errors %}
-                {% for error in form.picture.errors %}
-                  <span class="text-danger">{{ error }}</span></br>
-                {% endfor %}
-              {% else %}
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-              {% endif %}
-            </div>
-            {{ form.submit(class="btn btn-primary font-weight-bold") }}
-            <br>
-            <a class="btn btn-danger font-weight-bold mt-3" href="{{ url_for('users.change_password') }}">
-              {{  _("Change password")  }}
-            </a>
-            <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModel">
-              Delete Account
-            </button>
-            {% if user.user_admin %}
-              <a class="btn btn-grad font-weight-bold mt-3" href="{{ url_for('admin.index') }}">
-                {{  _("Admin panel")  }}
-              </a>
-            {% endif %}
-          </fieldset>
-      </form>
-    {% endif %}
-  </div>
+        </fieldset>
+    </form>
+  {% endif %}
 </div>
 <!-- Modal -->
 <div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="deleteModelLabel" aria-hidden="true">

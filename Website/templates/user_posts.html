@@ -3,11 +3,11 @@
   {% if posts.items|length > 0 %}
     <h1 class="mb-3">{{ title }} ({{ posts.total }})</h1>
     {% for post in posts.items %}
-    <div class="mb-5 row">
-      <div class="col-1">
+    <div class="mb-5 row row-card">
+      <div class="col-3 col-md-2">
         <img class="mt-1 ml-1 rounded-circle account-img"  width="100" height="100"  src="{{ url_for('static', filename='profile_pictures/' + post.author.image_file) }}"> 
       </div>
-      <div class="col-5">  
+      <div class="col-12 col-md-8">  
         <h4 class="mb-2">
           <a href="{{ url_for('posts.post', post_id=post.id) }}">
             {{ post.title }}

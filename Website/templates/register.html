@@ -4,7 +4,7 @@
   <div class="content-section">
     <form class="needs-validation" method="POST" action="" novalidate>
       {{ form.hidden_tag() }}
-      <fieldset class="w-50 h5">
+      <fieldset class="h5">
         <h1>{{  _("Register")  }}</h1>
         <div class="mb-3 mt-4">
           {{ form.username.label(class="form-control-label") }}
@@ -84,7 +84,7 @@
              </div>
           {% endif %}
         </div>
-        <div class="mb-3">
+        <div class="mb-4">
           {{ form.confirm_password.label(class="form-control-label") }}
           {% if form.confirm_password.errors %}
               {{ form.confirm_password(class="form-control form-control-lg is-invalid",
