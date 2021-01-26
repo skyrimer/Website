@@ -72,8 +72,8 @@ def compare_images():
             if picture_difference == 100:
                 flash(gettext('Pictures are the same'), 'success')
             else:
-                flash(
-                    gettext(f'Pictures are {picture_difference}% simular'), 'info')
+                flash_text = gettext('Picture simularity is')
+                flash(flash_text + " " + str(picture_difference) + "%", 'info')
         else:
             flash('You have entered wrong files. Files must be .png or .jpg', 'danger')
     return render_template('compare_images.html', title=gettext('Compare images'),

@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
 {% if form %}
-  <form class="needs-validation form-opinion" method="POST" action="" novalidate>
+  <form class="needs-validation form-opinion mb-4" method="POST" action="" novalidate>
     {{ form.hidden_tag() }}
-    <div class="mb-3 h5">
+    <div class="h5">
       {{ form.feedback_text.label(class="mb-2 form-control-label text-center") }}
       {% if form.feedback_text.errors %}
         {{ form.feedback_text(class="form-control form-control-lg is-invalid",
@@ -20,9 +20,9 @@
           Looks good!
         </div>
       {% endif %}
-    </div>
-    <div class="mb-3">
-      {{ form.submit(class="btn btn-outline-primary font-weight-bold") }}
+      <div class="mt-3">
+        {{ form.submit(class="btn btn-primary font-weight-bold") }}
+      </div>
     </div>
   </form>
 {% endif %}

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-24 19:56+0300\n"
-"PO-Revision-Date: 2021-01-24 19:56+0300\n"
+"POT-Creation-Date: 2021-01-26 18:54+0300\n"
+"PO-Revision-Date: 2021-01-26 18:54+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: de\n"
 "Language-Team: de <LL@li.org>\n"
@@ -18,40 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
 
-#: __init__.py:15
-msgid "Kirill's website"
-msgstr "Kirill's website"
-#: features/routes.py:16
+#: features/routes.py:17
 msgid "Something I can do"
-msgstr "Etwas was ich tun kann"
-#: features/routes.py:19 templates/layout.html:49
+msgstr "Etwas, das ich tun kann"
+#: features/routes.py:20 templates/layout.html:52
 msgid "Features"
 msgstr "Eigenschaften"
-#: features/routes.py:34 templates/features.html:36
+#: features/routes.py:35 templates/features.html:36
 msgid "Password check"
 msgstr "Passwortüberprüfung"
-#: features/routes.py:45 templates/features.html:33
+#: features/routes.py:46 templates/features.html:33
 msgid "Weather"
 msgstr "Wetter"
-#: features/routes.py:51
+#: features/routes.py:53
 msgid "Rocket Fly"
 msgstr "Raketenfliege"
-#: features/routes.py:55 templates/features.html:42
+#: features/routes.py:58 templates/features.html:42
 msgid "Password Generator"
 msgstr "Passwortgenerator"
-#: features/routes.py:60
+#: features/routes.py:63
 msgid "Face Recognotion"
 msgstr "Gesichtserkennung"
-#: features/routes.py:72
+#: features/routes.py:73
+msgid "Pictures are the same"
+msgstr "Bilder sind die gleichen"
+#: features/routes.py:75
+msgid "Picture simularity is "
+msgstr "Bildähnlichkeit ist"
+#: features/routes.py:79 templates/features.html:48
 msgid "Compare images"
 msgstr "Bilder vergleichen"
-#: main/routes.py:22 templates/layout.html:39
+#: main/routes.py:22 templates/layout.html:42
 msgid "About me"
 msgstr "Über mich"
 #: main/routes.py:35
 msgid "Thank you for yor opinion!)"
 msgstr "Danke für deine meinung!)"
-#: main/routes.py:41 templates/layout.html:44
+#: main/routes.py:41 templates/layout.html:47
 msgid "Feedback"
 msgstr "Feedback"
 #: posts/routes.py:20
@@ -69,9 +72,6 @@ msgstr "Beitrag aktualisieren"
 #: posts/routes.py:60
 msgid "Your Post Has Been Deleted!"
 msgstr "Dein beitrag wurde gelöscht!"
-#: templates/about.html:6
-msgid "👦Kirill Chekmenev👦"
-msgstr "Irkirill chekmenev👦"
 #: templates/about.html:8
 msgid "1. Creater of this Website"
 msgstr "1. ersteller dieser website"
@@ -105,7 +105,7 @@ msgstr "Passwort ändern"
 #: templates/account.html:107
 msgid "Admin panel"
 msgstr "Administrationsmenü"
-#: templates/change_password.html:8 users/routes.py:203
+#: templates/change_password.html:8 users/routes.py:207
 msgid "Change Password"
 msgstr "Passwort ändern"
 #: templates/features.html:29
@@ -117,10 +117,10 @@ msgstr "Raketenfliege"
 #: templates/features.html:45
 msgid "Face Recognition"
 msgstr "Gesichtserkennung"
-#: templates/features.html:49
+#: templates/features.html:52
 msgid "The best song ever"
 msgstr "Das beste lied"
-#: templates/features.html:57
+#: templates/features.html:60
 msgid "My Calculator"
 msgstr "Mein rechner"
 #: templates/feedback.html:13
@@ -138,25 +138,25 @@ msgstr "Alle artikel"
 #: templates/home.html:40
 msgid "There aren't any posts 😱"
 msgstr "Es gibt keine beiträge 😱"
-#: templates/layout.html:34
+#: templates/layout.html:37
 msgid "Home"
 msgstr "Zuhause"
-#: templates/layout.html:55 users/routes.py:178
+#: templates/layout.html:58 users/routes.py:182
 msgid "Account"
 msgstr "Konto"
-#: templates/layout.html:60
+#: templates/layout.html:63
 msgid "New post"
 msgstr "Neuer beitrag"
-#: templates/layout.html:65
+#: templates/layout.html:68
 msgid "Log out"
 msgstr "Ausloggen"
-#: templates/layout.html:71
+#: templates/layout.html:74
 msgid "Log in"
 msgstr "Einloggen"
-#: templates/layout.html:76 templates/register.html:8 users/routes.py:38
+#: templates/layout.html:79 templates/register.html:8 users/routes.py:41
 msgid "Register"
 msgstr "Registrieren"
-#: templates/layout.html:83
+#: templates/layout.html:86
 msgid "Choose language"
 msgstr "Sprache wählen"
 #: templates/login.html:8
@@ -190,7 +190,7 @@ msgstr "Sie haben bereits ein konto?"
 msgid "Sign In"
 msgstr "Anmelden"
 #: templates/reset_request.html:9 templates/reset_token.html:7
-#: users/routes.py:217 users/routes.py:238
+#: users/routes.py:221 users/routes.py:242
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 #: templates/user_posts.html:39
@@ -246,21 +246,21 @@ msgid ""
 msgstr """future"
 msgstr ""
 
-#: users/routes.py:36
+#: users/routes.py:39
 msgid "Your Account Has Been Created!"
 msgstr "Ihr konto wurde erstellt!"
-#: users/routes.py:53
+#: users/routes.py:57
 msgid "Login Unsuccessful. Please Check Email and Password"
 msgstr "Anmeldung nicht erfolgreich. bitte überprüfen sie e-mail und passwort"
-#: users/routes.py:174
+#: users/routes.py:178
 msgid "Your Account Has Been Updated!"
 msgstr "Dein konto wurde aktualisiert!"
-#: users/routes.py:200
+#: users/routes.py:204
 msgid "The password has been changed successfully!"
 msgstr "Das passwort wurde erfolgreich geändert!"
-#: users/routes.py:227
+#: users/routes.py:231
 msgid "That is an invalid or expired token"
 msgstr "Das ist ein ungültiges oder abgelaufenes token"
-#: users/routes.py:235
+#: users/routes.py:239
 msgid "Your password has been updated! You are now able to log in"
 msgstr "Ihr passwort wurde aktualisiert! sie können sich jetzt anmelden"

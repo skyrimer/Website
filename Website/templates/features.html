@@ -1,11 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/features.css')}}">
     <div class="wavy font-weight-bold">
-        {% for index in range(word_length)  %}
-            <h2 style="--i: {{ index+1 }};">{{  word[index]  }}</h2>
+        {% for index in range(word_length) %}
+            <h2 style="--i: {{ index+1 }};">{{ word[index] }}</h2>
         {% endfor %}
-    </div>  
+    </div>
     <div class="myclock">
         <div class="clock">
             <div class="wrap">
@@ -29,35 +28,35 @@
         {{ _("Total amount of views:") }} {{ my_views }}
     </button>
     <div class="mt-5">
-        <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.weather')  }}">
-            {{ _("Weather")  }}
+        <a class="btn btn-grad font-weight-bold md-5" href="{{ url_for('features.weather')  }}">
+            {{ _("Weather") }}
         </a>
         <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.password_check')  }}">
-            {{  _("Password check")  }}
+            {{ _("Password check") }}
         </a>
         <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.rocket')  }}">
-            {{  _("Rocket fly")  }}
+            {{ _("Rocket fly") }}
         </a>
         <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.password_generator')  }}">
-            {{  _("Password Generator")  }}
+            {{ _("Password Generator") }}
         </a>
         <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.face_recognition')  }}">
-            {{  _("Face Recognition")  }}
+            {{ _("Face Recognition") }}
         </a>
         <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.compare_images')  }}">
-            {{  _("Compare images")  }}
+            {{ _("Compare images") }}
         </a>
     </div>
     <div class="player mt-5">
-        <h3>{{  _("The best song ever")  }}</h3>
+        <h3>{{ _("The best song ever") }}</h3>
         <div class="imgBx">
             <img src="{{ url_for('static', filename='music/Battlefield.jpg') }}" alt="Here should be an image">
         </div>
         <audio preload="metadata" controls>
-            <source  src="{{ url_for('static', filename='music/Battlefield.mp3') }}" type="audio/mp3">
+            <source src="{{ url_for('static', filename='music/Battlefield.mp3') }}" type="audio/mp3">
         </audio>
     </div>
-    <h3 class="mt-5">{{  _("My Calculator") }}</h3>
+    <h3 class="mt-5">{{ _("My Calculator") }}</h3>
     <div class="my-calculator">
         <form class="calculator" name="calc">
             <input class="value" type="text" name="txt" readonly="">
@@ -92,5 +91,5 @@
             }
         }
     </script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/features.js') }}"></script>
 {% endblock content %}

@@ -1,0 +1,151 @@
+header {
+    padding-bottom: 30px;
+  }
+  footer {
+    background-color: transparent;
+  }
+  body {
+    background: #00c9ff;
+    background: -webkit-linear-gradient(
+      to right,
+      #92fe9d,
+      #00c9ff
+    ); 
+    background: linear-gradient(
+      to right,
+      #92fe9d,
+      #00c9ff
+    ); 
+    /*Alternative 
+      background: linear-gradient(to right, #fead06, #c00def);
+      */
+    background-size: 200%;
+    animation: gradient 20s ease infinite;
+    min-height: 100vh;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0%;
+    }
+  
+    50% {
+      background-position: 100%;
+    }
+  
+    100% {
+      background-position: 0%;
+    }
+  }
+  
+  /* Scrollbar */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 12px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: #ff6a00;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background: #ee0979; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to top,
+      #ff6a00,
+      #ee0979
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to top,
+      #ff6a00,
+      #ee0979
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  
+  .content {
+    padding: 20px 20px 20px 0px;
+  }
+  
+  .bg-navbar {
+    background: #0f2027;
+  }
+  
+  .hover-crossed li a:hover {
+    text-decoration: line-through;
+    transform: translate(0, -3px);
+    animation: glitch 1s linear infinite;
+  }
+  
+  @keyframes glitch {
+    2%,
+    64% {
+      transform: translate(3px, -3px);
+    }
+    4%,
+    60% {
+      transform: translate(-4px, -3px);
+    }
+    62% {
+      transform: translate(0, -3px);
+    }
+  }
+  /* about-card */
+  .bg-card {
+    cursor: default;
+    background: #9796f0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to top,
+      #fbc7d4,
+      #9796f0
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to top,
+      #fbc7d4,
+      #9796f0
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  
+  .about-card,
+  .form-opinion {
+    width: 500px;
+  }
+  .row-card {
+    width: 1000px;
+  }
+  div .text-truncate {
+    height: 500px;
+  }
+  @media (max-width: 500px) {
+    .about-card,
+    .form-opinion {
+      width: 100%;
+    }
+  }
+  @media (max-width: 1000px) {
+    .row-card {
+      width: 100%;
+    }
+  }
+  
+  .preloader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("Loader.gif") 50% 50% no-repeat rgb(103, 109, 137);
+  }
+  .loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+  }
+  
+  .loaded .preloader {
+    display: none;
+  }
+  

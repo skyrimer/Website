@@ -1,13 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/features.css')}}">
     <form class="featureBox" method="POST" action="">
         {{ form.hidden_tag() }}
         <div class="mb-3 w-50 h5" >
             {{ form.city.label(class="form-control-label h4") }}
             {% if form.city.errors %}
                 {{ form.city(class="form-control form-control-lg is-invalid",
-                                       placeholder="Enter city") }}
+                             placeholder="Enter city") }}
                 <div class="invalid-feedback">
                     {% for error in form.city.errors %}
                         <span>{{ error }}</span>

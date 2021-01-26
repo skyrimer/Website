@@ -1,6 +1,6 @@
 from googletrans import Translator
 from subprocess import call
-from os.path import join, exists
+from os.path import join
 from os import remove, chdir
 from colorama import init, Fore
 import codecs
