@@ -67,9 +67,9 @@ def compare_images():
         if form.validate_on_submit():
             picture_difference = compare_pictures(form)
             if picture_difference == 100:
-                flash('Pictures are the same', 'success')
+                flash(gettext('Pictures are the same'), 'success')
             else:
-                flash(f'Pictures are {picture_difference}% simular', 'info')
+                flash(gettext(f'Pictures are {picture_difference}% simular'), 'info')
         else:
             flash('You have entered wrong files. Files must be .png or .jpg', 'danger')
     return render_template('compare_images.html', title=gettext('Compare images'),
