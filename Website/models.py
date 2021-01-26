@@ -8,6 +8,7 @@ from flask_admin.form import SecureForm
 from flask_dance.consumer.storage.sqla import OAuthConsumerMixin
 import os
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -88,12 +89,12 @@ class AdminViewer(ModelView):
             return current_user.user_admin
         except:
             return None
-    
+
     def inaccessible_callback(self, name, **kwargs):
         # redirect to login page if user doesn't have access
         flash('You need to be registerd and admin have permition to enter this page', 'warning')
         return redirect(url_for('users.login'))
-            
+
 
 admin.add_view(AdminViewer(User, db.session))
 admin.add_view(AdminViewer(Post, db.session))

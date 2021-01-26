@@ -12,6 +12,8 @@ from skimage.metrics import structural_similarity as ssim
 from cv2 import cvtColor, COLOR_BGR2GRAY, imread, resize
 from werkzeug.utils import secure_filename
 import os
+
+
 class Weather():
     def __init__(self, city):
         owm = OWM(pyowm_key)
@@ -27,7 +29,8 @@ class Weather():
         else:
             self.status = 2
             weather = observation.weather
-            self.detailed_status = gettext(weather.detailed_status.capitalize())
+            self.detailed_status = gettext(
+                weather.detailed_status.capitalize())
             temperature = weather.temperature('celsius')
             self.temperature = round(temperature['temp'], 1)
             self.wind = weather.wind()['speed']
@@ -52,6 +55,7 @@ def check_the_password(password):
         strength_color = 'success'
     return f"{prefix}{password}%", strength_color
 
+
 def get_the_emount_of_views():
     user_counter = []
     my_views = db.engine.execute(select([views.requests]))
@@ -66,12 +70,12 @@ def compare_pictures(form):
     def save_images(form):
 
         path_1 = os.path.join(current_app.root_path,
-                                    'static\\profile_pictures', form.image_1.name)
+                              'static\\profile_pictures', form.image_1.name)
         path_2 = os.path.join(current_app.root_path,
-                                    'static\\profile_pictures', form.image_2.name)
+                              'static\\profile_pictures', form.image_2.name)
         form.image_1.data.save(path_1)
         form.image_2.data.save(path_2)
-        return path_1, path_2 
+        return path_1, path_2
 
     def delete_images(path_1, path_2):
         os.remove(path_1)

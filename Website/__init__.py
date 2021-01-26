@@ -6,7 +6,7 @@ from flask_login import LoginManager, current_user
 from flask_mail import Mail
 from flask_view_counter import ViewCounter
 from flask_admin import Admin
-from flask_dance.contrib.google import make_google_blueprint, google 
+from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.contrib.github import make_github_blueprint, github
 from Website.config import Config
 import os
@@ -23,8 +23,10 @@ mail = Mail()
 admin = Admin(name=title)
 pyowm_key = os.environ.get('PYOWM_KEY')
 languages = Config.LANGUAGES
-google_blueprint = make_google_blueprint(scope=["https://www.googleapis.com/auth/userinfo.email", "openid", "https://www.googleapis.com/auth/userinfo.profile"])
+google_blueprint = make_google_blueprint(
+    scope=["https://www.googleapis.com/auth/userinfo.email", "openid", "https://www.googleapis.com/auth/userinfo.profile"])
 github_blueprint = make_github_blueprint()
+
 
 @babel.localeselector
 def get_locale():
@@ -33,7 +35,7 @@ def get_locale():
     else:
         return request.accept_languages.best_match(languages)
 
-    
+
 def create_app(config_class=Config):
     global views
     """Creating the main app

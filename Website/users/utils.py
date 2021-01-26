@@ -62,7 +62,8 @@ def save_picture(form_picture):
 
 def get_picture_from_url(url):
     from PIL import Image
-    import urllib.request, io
+    import urllib.request
+    import io
     path = io.BytesIO(urllib.request.urlopen(url).read())
     return save_picture(path)
 
@@ -76,7 +77,8 @@ def reset_password(email):
               'warning')
     else:
         flash('An email has been sent with instructions to reset your password.',
-          'info')
+              'info')
+
 
 def send_reset_email(user):
     token = user.get_reset_token()

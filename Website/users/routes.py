@@ -16,8 +16,11 @@ from Website.users.utils import (save_picture, reset_password,
 from flask_babel import gettext
 from secrets import token_hex
 users = Blueprint('users', __name__)
-google_blueprint.backend = SQLAlchemyStorage(OAuth, db.session, user=current_user)
-github_blueprint.backend = SQLAlchemyStorage(OAuth, db.session, user=current_user)
+google_blueprint.backend = SQLAlchemyStorage(
+    OAuth, db.session, user=current_user)
+github_blueprint.backend = SQLAlchemyStorage(
+    OAuth, db.session, user=current_user)
+
 
 @users.route("/register", methods=['GET', 'POST'])
 def register():
@@ -50,7 +53,8 @@ def login():
             flash('Login successful', 'success')
             return redirect(url_for('main.home'))
         else:
-            flash(gettext('Login Unsuccessful. Please Check Email and Password'), 'danger')
+            flash(
+                gettext('Login Unsuccessful. Please Check Email and Password'), 'danger')
     return render_template('login.html', title='Log in', form=form)
 
 
@@ -100,7 +104,7 @@ def google_logged_in(blueprint, token):
 
         if not user:
             hashed_password = bcrypt.generate_password_hash(token_hex(16))\
-                                .decode('utf-8')
+                .decode('utf-8')
             image_file = get_picture_from_url(account_info_json['picture'])
             user = User(username=account_info_json['name'],
                         email=account_info_json['email'],
@@ -113,7 +117,7 @@ def google_logged_in(blueprint, token):
         login_user(user)
         flash("Login successful", 'info')
 
-    
+
 #! GitHub registration
 @users.route("/github_authorize")
 def github_auth():
@@ -135,7 +139,7 @@ def github_logged_in(blueprint, token):
 
         if not user:
             hashed_password = bcrypt.generate_password_hash(token_hex(16))\
-                                .decode('utf-8')
+                .decode('utf-8')
             image_file = get_picture_from_url(account_info_json['avatar_url'])
             user = User(username=account_info_json['name'],
                         email=account_info_json['email'],
@@ -155,7 +159,7 @@ def account(username):
     user = User.query.filter_by(username=username).first()
     if request.method == 'GET':
         if user:
-            if (current_user.is_authenticated) and  (current_user.username == user.username):
+            if (current_user.is_authenticated) and (current_user.username == user.username):
                 form.username.data = user.username
                 form.email.data = user.email
                 form.bio.data = user.bio
@@ -200,8 +204,8 @@ def change_password():
             flash(gettext('The password has been changed successfully!'), 'success')
             return redirect(url_for('main.home'))
         return render_template('change_password.html',
-                                title=gettext('Change Password'),
-                                form=form)
+                               title=gettext('Change Password'),
+                               form=form)
     else:
         return redirect(url_for('main.home'))
 

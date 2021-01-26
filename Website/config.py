@@ -1,5 +1,6 @@
 import os
 
+
 class Config:
     """Config of the app
     """

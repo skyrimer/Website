@@ -20,7 +20,7 @@ def create_post():
         flash(gettext(gettext('Your Post Has Been Created!')), 'success')
         return redirect(url_for('main.home'))
     return render_template('create_post.html', title=gettext('New Post'),
-                           form=form, legend=gettext('New Post') )
+                           form=form, legend=gettext('New Post'))
 
 
 @posts.route("/post/<int:post_id>")

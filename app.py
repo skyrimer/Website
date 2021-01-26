@@ -9,8 +9,9 @@ if argv[-1] == 'restart':
         db.drop_all()
         db.create_all()
 
+
 if __name__ == '__main__':
-    app.run(debug=True#,host="192.168.1.44"
+    app.run(debug=True  # ,host="192.168.1.44"
             )
 # 3d model
 # flip coin

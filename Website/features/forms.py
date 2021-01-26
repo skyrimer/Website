@@ -9,9 +9,11 @@ class CheckPasswordForm(FlaskForm):
                                 validators=[DataRequired()])
     submit = SubmitField('Check')
 
+
 class WeatherForm(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
     submit = SubmitField('Get weather')
+
 
 class ImageCompareForm(FlaskForm):
     image_1 = FileField('Image №1',

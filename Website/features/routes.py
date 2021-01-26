@@ -2,12 +2,13 @@ from flask import render_template, request, Blueprint, redirect, url_for, flash
 from flask_babel import gettext
 from Website.models import Post
 from Website import title, views
-from Website.features.utils import (Weather, check_the_password, 
+from Website.features.utils import (Weather, check_the_password,
                                     get_the_emount_of_views, compare_pictures)
 from Website.features.forms import (CheckPasswordForm, WeatherForm,
                                     ImageCompareForm)
 
 features = Blueprint('features', __name__)
+
 
 @features.route('/features')
 @views.count
@@ -45,10 +46,12 @@ def weather():
     return render_template('weather.html', title=gettext('Weather'),
                            weather=weather_at_place,
                            form=form)
-                    
+
+
 @features.route('/rocket', methods=['GET', 'POST'])
 def rocket():
     return render_template('rocket.html', title=gettext('Rocket Fly'))
+
 
 @features.route('/password_generator', methods=['GET', 'POST'])
 def password_generator():
@@ -69,7 +72,8 @@ def compare_images():
             if picture_difference == 100:
                 flash(gettext('Pictures are the same'), 'success')
             else:
-                flash(gettext(f'Pictures are {picture_difference}% simular'), 'info')
+                flash(
+                    gettext(f'Pictures are {picture_difference}% simular'), 'info')
         else:
             flash('You have entered wrong files. Files must be .png or .jpg', 'danger')
     return render_template('compare_images.html', title=gettext('Compare images'),
