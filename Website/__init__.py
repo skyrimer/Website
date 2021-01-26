@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_babel import Babel, gettext
+from flask_babel import Babel
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, current_user
 from flask_mail import Mail
@@ -12,7 +12,7 @@ from Website.config import Config
 import os
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-title = gettext("Kirill's website")
+title = "Kirill's website"
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 babel = Babel()
