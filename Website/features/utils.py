@@ -68,11 +68,9 @@ def get_the_emount_of_views():
 def compare_pictures(form):
 
     def save_images(form):
-
-        path_1 = os.path.join(current_app.root_path,
-                              'static\\profile_pictures', form.image_1.name)
-        path_2 = os.path.join(current_app.root_path,
-                              'static\\profile_pictures', form.image_2.name)
+        path = os.path.join(current_app.root_path, 'static', 'profile_pictures')
+        path_1 = os.path.join(path, form.image_1.name)
+        path_2 = os.path.join(path, form.image_2.name)
         form.image_1.data.save(path_1)
         form.image_2.data.save(path_2)
         return path_1, path_2
