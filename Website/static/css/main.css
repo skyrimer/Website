@@ -103,3 +103,22 @@ div .text-truncate {
     }
 }
 
+.preloader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('Loader.gif') 
+              50% 50% no-repeat rgb(103,109,137);
+
+  }
+  .loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+  }
+  
+  .loaded .preloader {
+    display: none;
+  }

@@ -2,8 +2,10 @@ from flask import render_template, request, Blueprint, redirect, url_for, flash
 from flask_babel import gettext
 from Website.models import Post
 from Website import title, views
-from Website.features.utils import Weather, check_the_password, get_the_emount_of_views
-from Website.features.forms import CheckPasswordForm, WeatherForm
+from Website.features.utils import (Weather, check_the_password, 
+                                    get_the_emount_of_views, compare_pictures)
+from Website.features.forms import (CheckPasswordForm, WeatherForm,
+                                    ImageCompareForm)
 
 features = Blueprint('features', __name__)
 
@@ -56,3 +58,19 @@ def password_generator():
 @features.route('/face_recognition')
 def face_recognition():
     return render_template('face_recognition.html', title=gettext('Face Recognotion'))
+
+
+@features.route("/compare_images", methods=['GET', 'POST'])
+def compare_images():
+    form = ImageCompareForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            picture_difference = compare_pictures(form)
+            if picture_difference == 100:
+                flash('Pictures are the same', 'success')
+            else:
+                flash(f'Pictures are {picture_difference}% simular', 'info')
+        else:
+            flash('You have entered wrong files. Files must be .png or .jpg', 'danger')
+    return render_template('compare_images.html', title=gettext('Compare images'),
+                           form=form)

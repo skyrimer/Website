@@ -1,4 +1,11 @@
 // Example starter JavaScript for disabling form submissions if there are invalid fields
+window.onload = function () {
+  document.body.classList.add('loaded_hiding');
+  window.setTimeout(function () {
+    document.body.classList.add('loaded');
+    document.body.classList.remove('loaded_hiding');
+  }, 500);
+}
 (function () {
  'use strict'
 
@@ -18,3 +25,4 @@
      }, false)
    })
 })()
+

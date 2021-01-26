@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+  <style>
+    #image_1, #image_2 {
+      width: 400px;
+    }
+  </style>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/features.css')}}">
+  <form class="row no-gutters justify-content-md-center needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="col justify-content-start">
+      {{ form.image_1.label() }}
+      <br>
+      {{ form.image_1(id="input_1") }}
+      {% if form.image_1.errors %}
+        {% for error in form.image_1.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% endif %}
+      <div class="md-3">
+        <br>
+      </div>
+      <img id="image_1" src="" alt="Your photo will appear here"/>
+    </div>
+    <div class="col-md-auto">
+      {{ form.image_2.label() }}
+      <br>
+      {{ form.image_2(id="input_2") }}
+      {% if form.image_2.errors %}
+        {% for error in form.image_2.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% endif %}
+      <div class="md-3">
+        <br>
+      </div>
+      <img id="image_2" src="" alt="Your photo will appear here"/>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-auto">
+      {{ form.submit(class="btn btn-primary font-weight-bold") }}
+    </div>
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/compare_pictures.js')}}"></script>
+{% endblock content %}

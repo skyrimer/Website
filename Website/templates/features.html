@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
     <link rel="stylesheet" href="{{url_for('static', filename='css/features.css')}}">
-    <meta http-equiv="Refresh" content="3600">
     <div class="wavy font-weight-bold">
         {% for index in range(word_length)  %}
             <h2 style="--i: {{ index+1 }};">{{  word[index]  }}</h2>
@@ -44,6 +43,9 @@
         </a>
         <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.face_recognition')  }}">
             {{  _("Face Recognition")  }}
+        </a>
+        <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.compare_images')  }}">
+            {{  _("Compare images")  }}
         </a>
     </div>
     <div class="player mt-5">

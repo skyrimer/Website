@@ -12,3 +12,5 @@ if argv[-1] == 'restart':
 if __name__ == '__main__':
     app.run(debug=False#,host="192.168.1.44"
             )
+# 3d model
+# flip coin

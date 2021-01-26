@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-08 21:01+0300\n"
-"PO-Revision-Date: 2021-01-08 21:01+0300\n"
+"POT-Creation-Date: 2021-01-24 17:29+0300\n"
+"PO-Revision-Date: 2021-01-24 17:29+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,112 +21,37 @@ msgstr ""
 #: __init__.py:15
 msgid "Kirill's website"
 msgstr "Sitio web de kirill"
-#: forms.py:13 forms.py:43 users/forms.py:14
-msgid "Username"
-msgstr "Nombre de usuario"
-#: forms.py:15 forms.py:35 forms.py:45 forms.py:71 users/forms.py:16
-#: users/forms.py:65
-msgid "Email"
-msgstr "Email"
-#: forms.py:18 users/forms.py:38 users/forms.py:77 users/forms.py:86
-msgid "Confirm Password"
-msgstr "Confirmar contraseña"
-#: forms.py:21 users/forms.py:41
-msgid "Sign Up"
-msgstr "Regístrate"
-#: forms.py:31 forms.py:61 users/forms.py:33 users/forms.py:51
-msgid "That email is taken. Please choose a different one."
-msgstr "Ese correo electrónico está tomado. elige uno diferente."
-#: forms.py:37 forms.py:82 users/forms.py:37 users/forms.py:59
-#: users/forms.py:76
-msgid "Password"
-msgstr "Contraseña"
-#: forms.py:38 users/forms.py:60
-msgid "Remember Me"
-msgstr "Recuérdame"
-#: forms.py:39 users/forms.py:61 users/routes.py:53
-msgid "Login"
-msgstr "Iniciar sesión"
-#: forms.py:47 users/forms.py:19
-msgid "Update Profile Picture"
-msgstr "Actualizar foto de perfil"
-#: forms.py:49 users/forms.py:21
-msgid "Update"
-msgstr "Actualizar"
-#: forms.py:55 users/forms.py:27 users/forms.py:46
-msgid "That username is taken. Please choose a different one."
-msgstr "Ese nombre de usuario está siendo usado. elige uno diferente."
-#: forms.py:65 main/forms.py:7 posts/forms.py:7
-msgid "Title"
-msgstr "Título"
-#: forms.py:66 posts/forms.py:9
-msgid "Content"
-msgstr "Contenido"
-#: forms.py:67 posts/forms.py:11
-msgid "Post"
-msgstr "Enviar"
-#: forms.py:73 users/forms.py:67
-msgid "Request Password Reset"
-msgstr "Petición para la recuperación de contraseña"
-#: forms.py:78
-msgid "There is no account with that email. You must register first."
-msgstr "No hay una cuenta con ese correo electrónico. primero debes registrarte."
-#: forms.py:85
-msgid "password"
-msgstr "Contraseña"
-#: forms.py:86 templates/reset_request.html:9 templates/reset_token.html:7
-#: users/forms.py:89 users/routes.py:198 users/routes.py:219
-msgid "Reset Password"
-msgstr "Restablecer la contraseña"
-#: features/forms.py:8
-msgid "Check the password here"
-msgstr "Compruebe la contraseña aquí"
-#: features/forms.py:10
-msgid "Check"
-msgstr "Cheque"
-#: features/forms.py:13
-msgid "City"
-msgstr "Ciudad"
-#: features/forms.py:15
-msgid "Get weather"
-msgstr "Obtener el clima"
-#: features/routes.py:14
+#: features/routes.py:16
 msgid "Something I can do"
 msgstr "Algo que pueda hacer"
-#: features/routes.py:17 templates/layout.html:36
+#: features/routes.py:19 templates/layout.html:49
 msgid "Features"
 msgstr "Caracteristicas"
-#: features/routes.py:32 templates/features.html:37
+#: features/routes.py:34 templates/features.html:36
 msgid "Password check"
 msgstr "Confirmacion de contraseña"
-#: features/routes.py:43 templates/features.html:34
+#: features/routes.py:45 templates/features.html:33
 msgid "Weather"
 msgstr "Clima"
-#: features/routes.py:49
+#: features/routes.py:51
 msgid "Rocket Fly"
 msgstr "Cohete volar"
-#: features/routes.py:53 templates/features.html:43
+#: features/routes.py:55 templates/features.html:42
 msgid "Password Generator"
 msgstr "Generador de contraseñas"
-#: features/routes.py:58
+#: features/routes.py:60
 msgid "Face Recognotion"
 msgstr "Reconocimiento facial"
-#: main/forms.py:9
-msgid "Opinion"
-msgstr "Opinión"
-#: main/forms.py:11
-msgid "Send Feedback"
-msgstr "Enviar comentarios"
-#: main/forms.py:13 posts/forms.py:13
-msgid "Unreal word"
-msgstr "Palabra irreal"
-#: main/routes.py:25 templates/layout.html:30 templates/layout.html:84
+#: features/routes.py:72
+msgid "Compare images"
+msgstr "Comparar imágenes"
+#: main/routes.py:22 templates/layout.html:39
 msgid "About me"
 msgstr "Sobre mí"
-#: main/routes.py:39
+#: main/routes.py:35
 msgid "Thank you for yor opinion!)"
 msgstr "¡gracias por tu opinión!)"
-#: main/routes.py:43 templates/layout.html:33
+#: main/routes.py:41 templates/layout.html:44
 msgid "Feedback"
 msgstr "Retroalimentación"
 #: posts/routes.py:20
@@ -145,90 +70,108 @@ msgstr "Actualizar publicación"
 msgid "Your Post Has Been Deleted!"
 msgstr "¡tu publicación ha sido eliminada!"
 #: templates/about.html:6
-msgid "Kirill Chekmenev"
-msgstr "Kirill chekmenev"
-#: templates/about.html:7
-msgid "A good person"
-msgstr "Una buena persona"
+msgid "👦Kirill Chekmenev👦"
+msgstr "Irkirill chekmenev👦"
+#: templates/about.html:8
+msgid "1. Creater of this Website"
+msgstr "1. creador de este sitio web"
 #: templates/about.html:9
+msgid "2. Good person"
+msgstr "2. buena persona"
+#: templates/about.html:10
+msgid "3. Hater of one-line operations in Python"
+msgstr "3. odio a las operaciones de una línea en python"
+#: templates/about.html:13
 msgid ""
-msgstr """ Russia, however I am currently studying in a secret place :) Hope "
-"everything is good and not lagging"
+msgstr """               My native country is Russia, and I have been learning "
+"programming for more than 3 years.\n"
+"               As you can see, the rate of studying is lower than "
+"turtle's movement.\n"
+"               Good day 😃"
 msgstr ""
 
-#: templates/account.html:28
+#: templates/account.html:15
 msgid "My posts"
 msgstr "Mis publicaciones"
-#: templates/account.html:32
+#: templates/account.html:19
 msgid "User's posts"
 msgstr "Publicaciones del usuario"
-#: templates/account.html:42
+#: templates/account.html:28
 msgid "Account Info"
 msgstr "Informacion de cuenta"
-#: templates/account.html:99
+#: templates/account.html:100
 msgid "Change password"
 msgstr "Cambia la contraseña"
-#: templates/account.html:106
-msgid "Choose language"
-msgstr "Elige lengua"
-#: templates/change_password.html:8 users/routes.py:184
+#: templates/account.html:107
+msgid "Admin panel"
+msgstr "Panel de administrador"
+#: templates/change_password.html:8 users/routes.py:203
 msgid "Change Password"
 msgstr "Cambia la contraseña"
-#: templates/features.html:30
-msgid "Total amount of views: "
+#: templates/features.html:29
+msgid "Total amount of views:"
 msgstr "Cantidad total de vistas:"
-#: templates/features.html:40
+#: templates/features.html:39
 msgid "Rocket fly"
 msgstr "Volar cohete"
-#: templates/features.html:46
+#: templates/features.html:45
 msgid "Face Recognition"
 msgstr "Reconocimiento facial"
-#: templates/features.html:50
+#: templates/features.html:49
 msgid "The best song ever"
 msgstr "La mejor canción de todas"
-#: templates/features.html:58
+#: templates/features.html:57
 msgid "My Calculator"
 msgstr "Mi calculadora"
+#: templates/feedback.html:13
+msgid "Please give a feedback"
+msgstr "Por favor dé su opinión"
 #: templates/feedback.html:30
 msgid "People's opinions"
 msgstr "Opiniones de la gente"
-#: templates/feedback.html:45
-msgid "No opinions :("
-msgstr "No hay opiniones :("
+#: templates/feedback.html:48
+msgid "No opinions 😱"
+msgstr "Sin opiniones 😱"
 #: templates/home.html:4
 msgid "All posts"
 msgstr "Todos los mensajes"
-#: templates/home.html:30
-msgid "There aren't any posts :("
-msgstr "No hay publicaciones :("
-#: templates/layout.html:27 templates/layout.html:81
+#: templates/home.html:40
+msgid "There aren't any posts 😱"
+msgstr "No hay publicaciones 😱"
+#: templates/layout.html:34
 msgid "Home"
 msgstr "Casa"
-#: templates/layout.html:40 users/routes.py:158
+#: templates/layout.html:55 users/routes.py:178
 msgid "Account"
 msgstr "Cuenta"
-#: templates/layout.html:43
+#: templates/layout.html:60
 msgid "New post"
 msgstr "Nueva publicación"
-#: templates/layout.html:46
+#: templates/layout.html:65
 msgid "Log out"
 msgstr "Cerrar sesión"
-#: templates/layout.html:50
+#: templates/layout.html:71
 msgid "Log in"
 msgstr "Iniciar sesión"
-#: templates/layout.html:53 templates/register.html:8 users/routes.py:37
+#: templates/layout.html:76 templates/register.html:8 users/routes.py:38
 msgid "Register"
 msgstr "Registrarse"
-#: templates/layout.html:77
-msgid "Thank's for watching)"
-msgstr "Gracias por ver)"
+#: templates/layout.html:83
+msgid "Choose language"
+msgstr "Elige lengua"
 #: templates/login.html:8
 msgid "Log In"
 msgstr "Iniciar sesión"
-#: templates/login.html:51
+#: templates/login.html:56 templates/register.html:110
+msgid "Login with Google"
+msgstr "Iniciar sesión con google"
+#: templates/login.html:60 templates/register.html:114
+msgid "Login with GitHub"
+msgstr "Iniciar sesión con github"
+#: templates/login.html:64
 msgid "Forgot Password?"
 msgstr "¿se te olvidó tu contraseña?"
-#: templates/login.html:55
+#: templates/login.html:68
 msgid "Register now!!!"
 msgstr "¡¡¡regístrate ahora!!!"
 #: templates/password_check.html:7
@@ -237,30 +180,28 @@ msgstr "Aquí puede verificar la seguridad de la contraseña"
 #: templates/password_check.html:9
 msgid "Everything is kept in secret :)"
 msgstr "Todo se mantiene en secreto :)"
-#: templates/password_generator.html:9
+#: templates/password_generator.html:10
 msgid "Click"
 msgstr "Hacer clic"
-#: templates/register.html:97
-msgid "Login with Google"
-msgstr "Iniciar sesión con google"
-#: templates/register.html:101
-msgid "Login with GitHub"
-msgstr "Iniciar sesión con github"
-#: templates/register.html:105
+#: templates/register.html:118
 msgid "Already Have An Account?"
 msgstr "¿ya tienes una cuenta?"
-#: templates/register.html:107
+#: templates/register.html:120
 msgid "Sign In"
 msgstr "Registrarse"
-#: templates/user_posts.html:31
-msgid "You have no posts :("
-msgstr "No tienes publicaciones :("
-#: templates/user_posts.html:33
-msgid "User has no posts :("
-msgstr "El usuario no tiene publicaciones :("
+#: templates/reset_request.html:9 templates/reset_token.html:7
+#: users/routes.py:217 users/routes.py:238
+msgid "Reset Password"
+msgstr "Restablecer la contraseña"
+#: templates/user_posts.html:39
+msgid "You have no posts 😱"
+msgstr "No tienes publicaciones 😱"
+#: templates/user_posts.html:41
+msgid "User has no posts 😱"
+msgstr "El usuario no tiene publicaciones 😱"
 #: templates/weather.html:24
-msgid "Unable to find city :("
-msgstr "No se puede encontrar la ciudad :("
+msgid "Unable to find city 😱"
+msgstr "No se puede encontrar la ciudad 😱"
 #: templates/weather.html:26
 msgid "Weather in"
 msgstr "Clima en"
@@ -283,8 +224,8 @@ msgstr "Nubes"
 msgid "Heat index"
 msgstr "Índice de calor"
 #: templates/weather.html:37
-msgid "Unable to show the weather :("
-msgstr "No se puede mostrar el clima :("
+msgid "Unable to show the weather 😱"
+msgstr "No puedo mostrar el clima 😱"
 #: templates/errors/403.html:4
 msgid "You don't have permission to do that (403)"
 msgstr "No tienes permiso para hacer eso (403)"
@@ -305,36 +246,21 @@ msgid ""
 msgstr """future"
 msgstr ""
 
-#: users/forms.py:18
-msgid "Bio (optional)"
-msgstr "Bio (opcional)"
-#: users/forms.py:57
-msgid "Email or Username"
-msgstr "Correo electrónico o nombre de usuario"
-#: users/forms.py:84
-msgid "Old Password"
-msgstr "Contraseña anterior"
-#: users/forms.py:85
-msgid "New Password"
-msgstr "Nueva contraseña"
-#: users/forms.py:93
-msgid "Wrong password!"
-msgstr "¡contraseña incorrecta!"
-#: users/routes.py:35
+#: users/routes.py:36
 msgid "Your Account Has Been Created!"
 msgstr "¡tu cuenta ha sido creada!"
-#: users/routes.py:52
+#: users/routes.py:53
 msgid "Login Unsuccessful. Please Check Email and Password"
-msgstr "Inicio de sesión fallido. por favor revise su correo electrónico y contraseña"
-#: users/routes.py:154
+msgstr "Inicio de sesión fallido. compruebe el correo electrónico y la contraseña"
+#: users/routes.py:174
 msgid "Your Account Has Been Updated!"
 msgstr "¡tu cuenta ha sido actualizada!"
-#: users/routes.py:181
+#: users/routes.py:200
 msgid "The password has been changed successfully!"
 msgstr "¡la contraseña ha sido cambiada con éxito!"
-#: users/routes.py:208
+#: users/routes.py:227
 msgid "That is an invalid or expired token"
 msgstr "Ese es un token inválido o vencido"
-#: users/routes.py:216
+#: users/routes.py:235
 msgid "Your password has been updated! You are now able to log in"
 msgstr "¡tu contraseña ha sido actualizada! ahora puede iniciar sesión"
