@@ -25,6 +25,7 @@ flask-view-counter==0.1.2
 Flask-WTF==0.14.3
 geojson==2.5.0
 googletrans==3.1.0a0
+gunicorn==20.0.4
 h11==0.9.0
 h2==3.2.0
 hpack==3.0.0
