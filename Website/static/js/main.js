@@ -6,7 +6,9 @@ window.onload = function () {
     document.body.classList.remove('loaded_hiding');
   }, 500);
 }
-
+window.onbeforeunload = function () {
+  document.body.classList.add('loaded_hiding');
+}
 // Custum validation with Bootstrap
 var forms = document.querySelectorAll('.needs-validation')
 Array.prototype.slice.call(forms)

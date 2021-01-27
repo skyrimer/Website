@@ -102,8 +102,13 @@
             <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModel">
               Delete Account
             </button>
+            <br>
             {% if user.user_admin %}
-              <a class="btn btn-grad font-weight-bold mt-3" href="{{ url_for('admin.index') }}">
+              <a class="btn-admin mt-3 justify-content-center" href="{{ url_for('admin.index') }}">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
                 {{  _("Admin panel")  }}
               </a>
             {% endif %}

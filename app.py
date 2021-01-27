@@ -13,5 +13,6 @@ if argv[-1] == 'restart':
 if __name__ == '__main__':
     app.run(debug=True  # ,host="192.168.1.44"
             )
-# 3d model
+# 3d model of ghost
 # flip coin
+# black jack
