@@ -8,8 +8,12 @@
   <meta name="theme-color" content="#ffffff">
   <!--  CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" id="theme" href="{{ url_for('static', filename='css/main-dark.css') }}">
-  <!-- Icon -->
+  {% if current_user.is_authenticated %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main-' + current_user.theme + '.css') }}">
+  {% else %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main-light.css') }}">
+  {% endif %}
+    <!-- Icon -->
   <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png')}}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png')}}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png')}}">
@@ -67,7 +71,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-danger" id='switchTheme'>Click to switch theme</a>
+            <a class="nav-link text-danger" href="{{ url_for('main.change_theme') }}">
+              {{  _("Change theme")  }}
+            </a>
           </li>
         {% else %}
           <li class="nav-item">

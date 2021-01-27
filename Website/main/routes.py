@@ -1,9 +1,10 @@
-from flask import render_template, request, Blueprint, redirect, url_for, flash
+from flask import (render_template, request, Blueprint, redirect,
+                   url_for, flash, make_response)
 from Website.models import Post
 from Website import title, db, babel, languages, views
 from Website.main.forms import FeedbackForm
 from Website.models import Feedback
-from flask_login import current_user
+from flask_login import current_user, login_required
 from flask_babel import gettext, refresh
 main = Blueprint('main', __name__)
 
@@ -55,7 +56,18 @@ def change_language(language):
         current_user.language = get_locale()
         db.session.commit()
     refresh()
-    return redirect('/')
+    return redirect(request.referrer)
+
+
+@main.route('/change_theme')
+@login_required
+def change_theme():
+    if current_user.theme == 'light':
+        current_user.theme = 'dark'
+    else:
+        current_user.theme = 'light'
+    db.session.commit()
+    return redirect(request.referrer)
 
 
 @main.route("/best_of_the_best_in_the_world")

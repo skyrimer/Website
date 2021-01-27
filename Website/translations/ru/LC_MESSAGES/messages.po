@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-27 09:13+0300\n"
-"PO-Revision-Date: 2021-01-27 09:13+0300\n"
+"POT-Creation-Date: 2021-01-27 14:35+0300\n"
+"PO-Revision-Date: 2021-01-27 14:35+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: features/routes.py:17
 msgid "Something I can do"
 msgstr "Что-то я могу сделать"
-#: features/routes.py:20 templates/layout.html:50
+#: features/routes.py:20 templates/layout.html:54
 msgid "Features"
 msgstr "Особенности"
 #: features/routes.py:35 templates/features.html:35
@@ -49,13 +49,13 @@ msgstr "Симуляция изображения"
 #: features/routes.py:79 templates/features.html:47
 msgid "Compare images"
 msgstr "Сравнить изображения"
-#: main/routes.py:22 templates/layout.html:40
+#: main/routes.py:23 templates/layout.html:44
 msgid "About me"
 msgstr "Обо мне"
-#: main/routes.py:35
+#: main/routes.py:36
 msgid "Thank you for yor opinion!)"
 msgstr "Спасибо за ваше мнение!)"
-#: main/routes.py:41 templates/layout.html:45
+#: main/routes.py:42 templates/layout.html:49
 msgid "Feedback"
 msgstr "Обратная связь"
 #: posts/routes.py:20
@@ -124,13 +124,13 @@ msgstr "Лучшая песня всех времен"
 #: templates/features.html:59
 msgid "My Calculator"
 msgstr "Мой калькулятор"
-#: templates/feedback.html:13
+#: templates/feedback.html:14
 msgid "Please give a feedback"
 msgstr "Пожалуйста, оставьте отзыв"
-#: templates/feedback.html:30
+#: templates/feedback.html:32
 msgid "People's opinions"
 msgstr "Мнения людей"
-#: templates/feedback.html:48
+#: templates/feedback.html:50
 msgid "No opinions 😱"
 msgstr "Нет отзывов 😱"
 #: templates/home.html:4
@@ -139,25 +139,28 @@ msgstr "Все сообщения"
 #: templates/home.html:40
 msgid "There aren't any posts 😱"
 msgstr "Нет никаких публикаций 😱"
-#: templates/layout.html:35
+#: templates/layout.html:39
 msgid "Home"
 msgstr "Главная"
-#: templates/layout.html:56 users/routes.py:182
+#: templates/layout.html:60 users/routes.py:182
 msgid "Account"
 msgstr "Счет"
-#: templates/layout.html:61
+#: templates/layout.html:65
 msgid "New post"
 msgstr "Новый пост"
-#: templates/layout.html:66
+#: templates/layout.html:70
 msgid "Log out"
 msgstr "Выйти"
-#: templates/layout.html:72
+#: templates/layout.html:75
+msgid "Change theme"
+msgstr "Менять тему"
+#: templates/layout.html:81
 msgid "Log in"
 msgstr "Авторизоваться"
-#: templates/layout.html:77 templates/register.html:7 users/routes.py:41
+#: templates/layout.html:86 templates/register.html:7 users/routes.py:41
 msgid "Register"
 msgstr "Регистр"
-#: templates/layout.html:87
+#: templates/layout.html:93
 msgid "Choose language"
 msgstr "Выберите язык"
 #: templates/login.html:7

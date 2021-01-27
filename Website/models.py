@@ -26,6 +26,7 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', backref='author', lazy=True)
     opinion = db.relationship('Feedback', backref='_user', lazy=True)
     language = db.Column(db.String(3), nullable=False, default='en')
+    theme = db.Column(db.String(5), nullable=False, default='light')
 
     def check_for_admin(self):
         if self.email in os.environ['MY_EMAIL'].split():
