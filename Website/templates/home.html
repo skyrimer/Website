@@ -14,7 +14,7 @@
             </a>
           </h4>
           <h5>
-            <a class="text-dark" href="{{ url_for('users.account', username=post.author.username) }}">
+            <a href="{{ url_for('users.account', username=post.author.username) }}">
               by {{ post.author.username }}
             </a>
           </h5>

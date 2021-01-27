@@ -24,11 +24,11 @@
         <p id="dayNumber"></p>
         <p id="year"></p>
     </div>
-    <button class="mt-5 btn btn-outline-dark btn-lg font-weight-bold">
+    <button class="mt-5 btn btn-info btn-lg font-weight-bold">
         {{ _("Total amount of views:") }} {{ my_views }}
     </button>
     <div class="mt-5">
-        <a class="btn btn-grad font-weight-bold md-5" href="{{ url_for('features.weather')  }}">
+        <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.weather')  }}">
             {{ _("Weather") }}
         </a>
         <a class="btn btn-grad font-weight-bold" href="{{ url_for('features.password_check')  }}">
