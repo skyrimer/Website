@@ -47,10 +47,6 @@ body {
   background: linear-gradient(to right, #243b55, #141e30);
 }
 
-.content {
-  padding: 20px 20px 20px 0px;
-}
-
 .bg-navbar {
   background: #0f2027;
 }
@@ -124,9 +120,7 @@ div .text-truncate {
 }
 
 form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 600px;
   padding: 20px;
   box-shadow: 0 10px 50px #000000;
 }
@@ -489,7 +483,7 @@ audio::-webkit-media-controls-panel {
   opacity: 1;
 }
 
-.btn-admin{
+.btn-admin {
   position: relative;
   display: inline-block;
   padding: 25px 30px;
@@ -502,5 +496,5 @@ audio::-webkit-media-controls-panel {
   margin-right: 50px;
   background: #03e9f4;
   color: #050801;
-   -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
 }

@@ -44,9 +44,6 @@ body {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background: #ee9ca7;
 }
-.content {
-  padding: 20px 20px 20px 0px;
-}
 
 .bg-navbar {
   background: #0f2027;
@@ -121,9 +118,7 @@ div .text-truncate {
 }
 
 form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 600px;
   padding: 20px;
   box-shadow: 0 10px 50px #ffffff;
 }

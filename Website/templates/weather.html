@@ -2,7 +2,7 @@
 {% block content %}
     <form class="featureBox" method="POST" action="">
         {{ form.hidden_tag() }}
-        <div class="mb-3 w-50 h5" >
+        <div class="mb-3 h5" >
             {{ form.city.label(class="form-control-label h4") }}
             {% if form.city.errors %}
                 {{ form.city(class="form-control form-control-lg is-invalid",
