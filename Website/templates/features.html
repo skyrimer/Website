@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="wavy font-weight-bold">
+    <div class="wavy">
         {% for index in range(word_length) %}
             <h2 style="--i: {{ index+1 }};">{{ word[index] }}</h2>
         {% endfor %}
+    </div>
+    <div class="mt-5">
+        <h5 id="Time"> Time - 00:00:00 </h5>
     </div>
     <div class="myclock">
         <div class="clock">
@@ -14,9 +17,6 @@
                 <span class="dot"></span>
             </div>
         </div>
-    </div>
-    <div class="mt-5">
-        <h5 id="Time"> Time - 00:00:00 </h5>
     </div>
     <div class="calendar">
         <p id="monthName"></p>

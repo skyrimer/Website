@@ -78,3 +78,7 @@ def compare_images():
             flash('You have entered wrong files. Files must be .png or .jpg', 'danger')
     return render_template('compare_images.html', title=gettext('Compare images'),
                            form=form)
+
+@features.route("/black_jack")
+def black_jack():
+    return render_template('black_jack.html', title=gettext('Black Jack'))

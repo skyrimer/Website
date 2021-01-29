@@ -1,3 +1,4 @@
+
 header {
   padding-bottom: 30px;
 }
@@ -129,6 +130,7 @@ form {
   word-spacing: 5px;
   position: relative;
   font-family: "Bad Script", cursive;
+  
 }
 .wavy h2 {
   position: relative;
@@ -137,6 +139,18 @@ form {
   text-transform: uppercase;
   animation: wave 2s ease-in-out infinite;
   animation-delay: calc(0.1s * var(--i));
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0005); 
+}
+
+@media (max-width: 800px) {
+  .wavy h2 {
+    font-size: 1.5em;
+  }
+}
+@media (max-width: 500px) {
+  .wavy h2 {
+    font-size: 1.2em;
+  }
 }
 @keyframes wave {
   0% {
@@ -153,7 +167,9 @@ form {
     transform: translateY(0px);
   }
 }
-
+.features {
+  text-align: center;
+}
 /* Clock */
 .myclock {
   padding-bottom: 20px;
@@ -337,7 +353,7 @@ audio::-webkit-media-controls-panel {
   padding: 0px 20px 20px 0px;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  display: flex;
+  display: inline-block;
 }
 
 .calculator {
